@@ -13,15 +13,16 @@
 #include <FL/glut.h>
 #include "modelerglobals.h"
 #include "particleSystem.h"
-
-
+#include "metaball.h"
 using namespace std;
+
+
 // To make a SampleModel, we inherit off of ModelerView
-class SampleModel : public ModelerView 
+class SampleModel : public ModelerView
 {
 public:
-    SampleModel(int x, int y, int w, int h, char *label) 
-        : ModelerView(x,y,w,h,label) { }
+	SampleModel(int x, int y, int w, int h, char *label)
+		: ModelerView(x, y, w, h, label) { }
 
 	virtual void draw();
 	int feet_angle = 0;
@@ -33,8 +34,8 @@ public:
 // We need to make a creator function, mostly because of
 // nasty API stuff that we'd rather stay away from.
 ModelerView* createSampleModel(int x, int y, int w, int h, char *label)
-{ 
-    return new SampleModel(x,y,w,h,label); 
+{
+	return new SampleModel(x, y, w, h, label);
 }
 
 // We are going to override (is that the right word?) the draw()
@@ -53,7 +54,7 @@ void SampleModel::draw()
 			beat_count = 0;
 			heart_beat = !heart_beat;
 		}
-		
+
 		if (VAL(MOOD) == false)
 		{
 
@@ -72,7 +73,7 @@ void SampleModel::draw()
 	{
 
 		//ANION();
-		SETVAL(NOSE,1.5);
+		SETVAL(NOSE, 1.5);
 		SETVAL(NERVOUS, 1);
 		SETVAL(RIGHT_ARM, 35);
 		SETVAL(LEFT_ARM, -39);
@@ -91,7 +92,7 @@ void SampleModel::draw()
 	ModelerView::draw();
 
 	GLfloat lightPosition0[] = { VAL(LIGHT_X), VAL(LIGHT_Y), VAL(LIGHT_Z), 0.0f };
-	GLfloat lightDiffuse0[] = { VAL(LIGHT_R), VAL(LIGHT_G), VAL(LIGHT_B)};
+	GLfloat lightDiffuse0[] = { VAL(LIGHT_R), VAL(LIGHT_G), VAL(LIGHT_B) };
 	GLfloat lightPosition1[] = { VAL(LIGHT1_X), VAL(LIGHT1_Y), VAL(LIGHT1_Z), 0.0f };
 	GLfloat lightDiffuse1[] = { VAL(LIGHT1_R), VAL(LIGHT1_G), VAL(LIGHT1_B) };
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition0);
@@ -103,7 +104,7 @@ void SampleModel::draw()
 	{
 		glPushMatrix();
 		//glRotated(180, 1.0, 0.0, 0.0);
-		glTranslated(VAL(XPOS), VAL(YPOS)-5, VAL(ZPOS));
+		glTranslated(VAL(XPOS), VAL(YPOS) - 5, VAL(ZPOS));
 		drawLSystem(VAL(L_SYSTEM_ITERATION));
 		glPopMatrix();
 
@@ -160,9 +161,9 @@ void SampleModel::draw()
 			glPushMatrix();
 			glRotated(VAL(ROTATE), 0.0, 1.0, 0.0);
 			glRotated(-90, 1.0, 0.0, 0.0);
-			drawCylinder(VAL(HEIGHT)+0.1, 0.4, 0.3);//NECK
+			drawCylinder(VAL(HEIGHT) + 0.1, 0.4, 0.3);//NECK
 
-			//draw head
+													  //draw head
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
 				setDiffuseColor(COLOR_DARK_RED);
@@ -171,7 +172,7 @@ void SampleModel::draw()
 				glPushMatrix();
 				glTranslated(0.0, 0.0, 0.6);
 				glScaled(0.4, 0.4, 0.4);
-				
+
 				glutSolidDodecahedron();
 				glPopMatrix();
 
@@ -308,7 +309,7 @@ void SampleModel::draw()
 			//draw upper leg
 			glRotated(-270, 1.0, 0.0, 0.0);
 			glRotated(VAL(RIGHT_LEG), 1.0, 0.0, 0.0);
-			
+
 			glPushMatrix();
 			glTranslated(0.0, 0.0, 0.5);
 			glScaled(0.4, 0.3, 0.5);
@@ -412,7 +413,6 @@ void SampleModel::draw()
 		glPushMatrix();
 		glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
 
-
 		glTranslated(-1, -1, 0);
 		if (VAL(TEXTURE) == 1)
 			drawTextureBox(2, 2, 1, "Image/Red.bmp");
@@ -450,22 +450,34 @@ void SampleModel::draw()
 			glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
 			glTranslated(0, 0.1, 0.5);
 			//draw neck
-			glPushMatrix();
-			glRotated(VAL(ROTATE), 0.0, 1.0, 0.0);
-			glRotated(-90, 1.0, 0.0, 0.0);
-			drawCylinder(VAL(HEIGHT), 0.4, 0.4);//NECK
-												//draw head
+			if (VAL(METABALL) == false)
+			{
+				glPushMatrix();
+				glRotated(VAL(ROTATE), 0.0, 1.0, 0.0);
+				glRotated(-90, 1.0, 0.0, 0.0);
+				drawCylinder(VAL(HEIGHT), 0.4, 0.4);//NECK
+			}
+			else
+			{
+				glPushMatrix();
+				glRotated(VAL(ROTATE), 0.0, 1.0, 0.0);
+				glRotated(-90, 1.0, 0.0, 0.0);
+			}
+			//draw head
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
 				setDiffuseColor(COLOR_DARK_RED);
 				glTranslated(0.0, 0.0, VAL(HEIGHT));
+
+
+
 
 				if (VAL(TEXTURE) == 1)
 					drawTextureCylinder(0.7, 0.6, 0.5, "Image/Red.bmp");//head
 				else
 					drawCylinder(0.7, 0.6, 0.5);//head
 
-				//draw nose
+												//draw nose
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					setDiffuseColor(COLOR_GRAY);
@@ -480,11 +492,11 @@ void SampleModel::draw()
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					setDiffuseColor(COLOR_WHITE);
-					glTranslated(0.2, 0.2, -0.3- VAL(NOSE));
+					glTranslated(0.2, 0.2, -0.3 - VAL(NOSE));
 					drawSphere(0.08);
 					glTranslated(-0.4, 0.0, 0.0);
 					drawSphere(0.08);
-	
+
 				}
 
 				//draw mouth
@@ -498,10 +510,21 @@ void SampleModel::draw()
 						glRotated(180, 0.0, 1.0, 0.0);
 						glTranslated(-0.3, 0.0, -0.27);
 					}
-						
+
 					drawTriangularPolygon(0.3, 0.3, 0.05, 60);
 
 				}
+				if (VAL(METABALL) == true)
+				{
+					setDiffuseColor(COLOR_DARK_RED);
+					MetaBall* m_metaBall = new MetaBall(1.0f);
+					m_metaBall->addBallRel(0.2, -0.8, -1.5, 2.0);
+					m_metaBall->addBallRel(0.2, 0.12, -1.5, 2.0);
+					m_metaBall->draw(15);
+					delete m_metaBall;
+				}
+
+
 
 			}
 			glPopMatrix();
@@ -522,17 +545,30 @@ void SampleModel::draw()
 			glRotated(VAL(RIGHT_ARM), 1.0, 0.0, 0.0);
 			glRotated(-90, 1.0, 0.0, 0.0);
 
-			if (VAL(TEXTURE) == 1)
-				drawTextureCylinder(0.6, 0.3, 0.2, "Image/Red.bmp");
-			else
-				drawCylinder(0.6, 0.3, 0.2);//shoulder
+			if (VAL(METABALL) == false)
+			{
+				if (VAL(TEXTURE) == 1)
+					drawTextureCylinder(0.6, 0.3, 0.2, "Image/Red.bmp");
+				else
+					drawCylinder(0.6, 0.3, 0.2);//shoulder
+			}
+
+
 
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
-				//draw joint
-				setDiffuseColor(COLOR_GRAY);
-				glTranslated(0, 0, -0.2);
-				drawCylinder(0.2, 0.2, 0.2);//joint
+				if (VAL(METABALL) == false)
+				{
+					//draw joint
+					setDiffuseColor(COLOR_GRAY);
+					glTranslated(0, 0, -0.2);
+					drawCylinder(0.2, 0.2, 0.2);//joint
+				}
+				else
+				{
+					setDiffuseColor(COLOR_GRAY);
+					glTranslated(0, 0, -0.2);
+				}
 
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
@@ -559,6 +595,17 @@ void SampleModel::draw()
 					}
 
 				}
+
+				if (VAL(METABALL) == true)
+				{
+					setDiffuseColor(COLOR_DARK_RED);
+					MetaBall* m_metaBall = new MetaBall(1.0f);
+					m_metaBall->addBallRel(0.0, 0.9, 0.12, 0.4);
+					m_metaBall->addBallRel(0.0, 1.6, 0.12, 0.5);
+					m_metaBall->draw(6);
+					delete m_metaBall;
+				}
+
 			}
 			glPopMatrix();
 			glPopMatrix();
@@ -576,17 +623,22 @@ void SampleModel::draw()
 			//draw shoulder
 			glRotated(VAL(LEFT_ARM), 1.0, 0.0, 0.0);
 			glRotated(-90, 1.0, 0.0, 0.0);
-			if (VAL(TEXTURE) == 1)
-				drawTextureCylinder(0.6, 0.3, 0.2, "Image/Red.bmp");
-			else
-				drawCylinder(0.6, 0.3, 0.2);//shoulder
-
+			if (VAL(METABALL) == false)
+			{
+				if (VAL(TEXTURE) == 1)
+					drawTextureCylinder(0.6, 0.3, 0.2, "Image/Red.bmp");
+				else
+					drawCylinder(0.6, 0.3, 0.2);//shoulder
+			}
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
 				//draw joint
 				setDiffuseColor(COLOR_GRAY);
 				glTranslated(0, 0, -0.2);
-				drawCylinder(0.2, 0.2, 0.2);//joint
+				if (VAL(METABALL) == false)
+				{
+					drawCylinder(0.2, 0.2, 0.2);//joint
+				}
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					//draw arm
@@ -597,6 +649,15 @@ void SampleModel::draw()
 						drawTextureCylinder(1.2, 0.3, 0.32, "Image/Red.bmp");
 					else
 						drawCylinder(1.2, 0.3, 0.3);//arm
+				}
+				if (VAL(METABALL) == true)
+				{
+					setDiffuseColor(COLOR_DARK_RED);
+					MetaBall* m_metaBall = new MetaBall(1.0f);
+					m_metaBall->addBallRel(0.0, 0.9, 0.12, 0.4);
+					m_metaBall->addBallRel(0.0, 1.6, 0.12, 0.5);
+					m_metaBall->draw(6);
+					delete m_metaBall;
 				}
 			}
 			glPopMatrix();
@@ -625,7 +686,22 @@ void SampleModel::draw()
 				setDiffuseColor(COLOR_GRAY);
 				glTranslated(0, 0, 1.3);
 				glRotated(VAL(RIGHT_KNEE), 1.0, 0.0, 0.0);
-				drawSphere(0.3);
+				if (VAL(METABALL) == false)
+				{
+					drawSphere(0.3);
+				}
+				else
+				{
+					if (VAL(METABALL) == true)
+					{
+						setDiffuseColor(COLOR_DARK_RED);
+						MetaBall* m_metaBall = new MetaBall(1.0f);
+						m_metaBall->addBallRel(0.0, -0.3, 0.12, 0.4);
+						m_metaBall->addBallRel(0.0, 0.3, 0.12, 0.5);
+						m_metaBall->draw(7);
+						delete m_metaBall;
+					}
+				}
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					//draw lower leg
@@ -673,7 +749,22 @@ void SampleModel::draw()
 				setDiffuseColor(COLOR_GRAY);
 				glTranslated(0, 0, 1.3);
 				glRotated(VAL(LEFT_KNEE), 1.0, 0.0, 0.0);
-				drawSphere(0.3);
+				if (VAL(METABALL) == false)
+				{
+					drawSphere(0.3);
+				}
+				else
+				{
+					if (VAL(METABALL) == true)
+					{
+						setDiffuseColor(COLOR_DARK_RED);
+						MetaBall* m_metaBall = new MetaBall(1.0f);
+						m_metaBall->addBallRel(0.0, -0.3, 0.12, 0.4);
+						m_metaBall->addBallRel(0.0, 0.3, 0.12, 0.5);
+						m_metaBall->draw(7);
+						delete m_metaBall;
+					}
+				}
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					//draw lower leg
@@ -710,7 +801,7 @@ int main()
 	// Initialize the controls
 	// Constructor is ModelerControl(name, minimumvalue, maximumvalue, 
 	// stepsize, defaultvalue)
-    ModelerControl controls[NUMCONTROLS];
+	ModelerControl controls[NUMCONTROLS];
 	controls[LIGHT_X] = ModelerControl("Light0 X", -5, 5, 0.1, 4.0);
 	controls[LIGHT_Y] = ModelerControl("Light0 Y", -5, 5, 0.1, 2.0);
 	controls[LIGHT_Z] = ModelerControl("Light0 Z", -5, 5, 0.1, -4.0);
@@ -723,17 +814,17 @@ int main()
 	controls[LIGHT1_R] = ModelerControl("Light1 R", 0.0f, 1.0f, 0.1f, 1.0f);
 	controls[LIGHT1_G] = ModelerControl("Light1 G", 0.0f, 1.0f, 0.1f, 1.0f);
 	controls[LIGHT1_B] = ModelerControl("Light1 B", 0.0f, 1.0f, 0.1f, 1.0f);
-    controls[XPOS] = ModelerControl("X Position", -5, 5, 0.1f, 0);
-    controls[YPOS] = ModelerControl("Y Position", 0, 5, 0.1f, 0);
-    controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
-    controls[HEIGHT] = ModelerControl("Neck Height", 1, 2.5, 0.1f, 1);
+	controls[XPOS] = ModelerControl("X Position", -5, 5, 0.1f, 0);
+	controls[YPOS] = ModelerControl("Y Position", 0, 5, 0.1f, 0);
+	controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
+	controls[HEIGHT] = ModelerControl("Neck Height", 1, 2.5, 0.1f, 1);
 	controls[ROTATE] = ModelerControl("Head Rotate", -135, 135, 1, 0);
 	controls[NERVOUS] = ModelerControl("Nervous", 0, 1, 1, 0);
 	controls[NOSE] = ModelerControl("Nose Length", 0.0, 2, 0.1f, 0);
 	controls[RIGHT_ARM] = ModelerControl("Right Arm", -90, 90, 1, 0);
 	controls[LEFT_ARM] = ModelerControl("Left Arm", -90, 90, 1, 0);
 	controls[RIGHT_LEG] = ModelerControl("Right Leg", -90, 90, 1, 0);
-	controls[LEFT_LEG] = ModelerControl("Left Leg",  -90, 90, 1,0);
+	controls[LEFT_LEG] = ModelerControl("Left Leg", -90, 90, 1, 0);
 	controls[RIGHT_KNEE] = ModelerControl("Right Knee", 0, 90, 1, 0);
 	controls[LEFT_KNEE] = ModelerControl("Left Knee", 0, 90, 1, 0);
 	controls[FEET_ROTATE] = ModelerControl("Feet Rotate", 0, 45, 1, 0);
@@ -749,8 +840,8 @@ int main()
 	controls[CONSTRAINT_X] = ModelerControl("Constraint 1 X", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Y] = ModelerControl("Constraint 1 Y", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Z] = ModelerControl("Constraint 1 Z", -5, 5, 0.1, 0);
+	controls[METABALL] = ModelerControl("metaball", 0, 1, 1, 0);
 
-
-    ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
-    return ModelerApplication::Instance()->Run();
+	ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
+	return ModelerApplication::Instance()->Run();
 }
