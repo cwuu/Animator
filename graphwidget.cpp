@@ -21,9 +21,9 @@
 #include <algorithm>
 #include <float.h>
 #include <fstream>
-
+#include "curve.h"
 #include "GraphWidget.h"
-
+#include "vec.h"
 #include "LinearCurveEvaluator.h"
 #include "catnullromcurve.h"
 #include "beziercurve.h"

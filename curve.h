@@ -70,6 +70,7 @@ protected:
 
 	float m_fMaxX;
 	bool m_bWrap;
+	bool m_bAdaptive;
 	static float s_fCtrlPtXEpsilon;
 };
 

@@ -15,6 +15,9 @@
 #include "point.h"
 #include "curve.h"
 #include "curveevaluator.h"
+#include "catnullromcurve.h"
+#include "beziercurve.h"
+#include "bsplinecurve.h" 
 
 #define CURVE_TYPE_LINEAR 0
 #define CURVE_TYPE_BSPLINE 1

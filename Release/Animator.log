@@ -1,11 +1,7 @@
 ﻿  beziercurve.cpp
-beziercurve.cpp(31): warning C4018: '<': signed/unsigned mismatch
-beziercurve.cpp(54): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-beziercurve.cpp(80): warning C4018: '<': signed/unsigned mismatch
-beziercurve.cpp(124): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-beziercurve.obj : error LNK2019: unresolved external symbol "class Vec4<double> __cdecl operator*<double>(class Vec4<double> const &,class Mat4<double> const &)" (??$?DN@@YA?AV?$Vec4@N@@ABV0@ABV?$Mat4@N@@@Z) referenced in function "public: virtual void __thiscall BezierCurveEvaluator::evaluateCurve(class std::vector<class Point,class std::allocator<class Point> > const &,class std::vector<class Point,class std::allocator<class Point> > &,float const &,bool const &)const " (?evaluateCurve@BezierCurveEvaluator@@UBEXABV?$vector@VPoint@@V?$allocator@VPoint@@@std@@@std@@AAV23@ABMAB_N@Z)
-graphwidget.obj : error LNK2019: unresolved external symbol "public: void __thiscall Curve::adaptive(bool)" (?adaptive@Curve@@QAEX_N@Z) referenced in function "public: void __thiscall GraphWidget::currCurveAdaptive(bool)" (?currCurveAdaptive@GraphWidget@@QAEX_N@Z)
-graphwidget.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Curve::adaptive(void)const " (?adaptive@Curve@@QBE_NXZ) referenced in function "public: int __thiscall GraphWidget::currCurveAdaptive(void)const " (?currCurveAdaptive@GraphWidget@@QBEHXZ)
-graphwidget.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall CatnullRomEvaluator::evaluateCurve(class std::vector<class Point,class std::allocator<class Point> > const &,class std::vector<class Point,class std::allocator<class Point> > &,float const &,bool const &)const " (?evaluateCurve@CatnullRomEvaluator@@UBEXABV?$vector@VPoint@@V?$allocator@VPoint@@@std@@@std@@AAV23@ABMAB_N@Z)
-graphwidget.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall BSplineCurveEvaluator::evaluateCurve(class std::vector<class Point,class std::allocator<class Point> > const &,class std::vector<class Point,class std::allocator<class Point> > &,float const &,bool const &)const " (?evaluateCurve@BSplineCurveEvaluator@@UBEXABV?$vector@VPoint@@V?$allocator@VPoint@@@std@@@std@@AAV23@ABMAB_N@Z)
-.\Release\modeler.exe : fatal error LNK1120: 5 unresolved externals
+beziercurve.cpp(26): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+beziercurve.cpp(73): warning C4018: '<': signed/unsigned mismatch
+beziercurve.cpp(97): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+beziercurve.cpp(128): warning C4018: '<': signed/unsigned mismatch
+  Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
+  Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)
