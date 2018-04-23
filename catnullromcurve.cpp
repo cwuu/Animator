@@ -19,8 +19,7 @@ void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, st
 	}
 	else
 	{
-		//ptvEvaluatedCurvePts.push_back(Point(0, ptvCtrlPts[0].y));
-		//ptvEvaluatedCurvePts.push_back(Point(fAniLength, ptvCtrlPts.back().y));
+
 		curve.push_back(ptvCtrlPts[0]);
 		curve.push_back(ptvCtrlPts[0]);
 		curve.insert(curve.end(), ptvCtrlPts.begin(), ptvCtrlPts.end());
@@ -58,7 +57,6 @@ void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, st
 
 	if (bWrap == false)
 	{
-
 		ptvEvaluatedCurvePts.push_back(Point(0, ptvEvaluatedCurvePts[0].y));
 		ptvEvaluatedCurvePts.push_back(Point(fAniLength, ptvEvaluatedCurvePts.back().y));
 	}

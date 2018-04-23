@@ -8,7 +8,31 @@
 #include <assert.h>
 #include <math.h>
 #include <limits.h>
+#include "modelerdraw.h"
 
+#define ParticleSize 3
+#define gravity 9.8
+#define K 0.25 //todo: try realistic k
+
+void Particle::update(double timeStep)
+{
+	velocity = velocity + netForce / mass * timeStep;
+	position = position + velocity * timeStep;
+	Vec3d force = this->getNetForce()- K * this->getVelocity()+ gravity * this->getMass();
+	setNetForce(force);
+
+}
+void Particle::draw()
+{
+	setDiffuseColor(0, 0, 1); 
+	glPushMatrix();
+		glPointSize(ParticleSize);
+		glBegin(GL_POINTS);
+		glVertex3f(position[0], position[1], position[2]);
+		glEnd();
+	glPopMatrix();
+	glPointSize(1);
+}
 
 /***************
  * Constructors

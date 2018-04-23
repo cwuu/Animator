@@ -17,7 +17,41 @@
 #define __PARTICLE_SYSTEM_H__
 
 #include "vec.h"
+#include <vector>
+#include <FL/gl.h>
+using namespace std;
 
+
+class Particle {
+
+private:
+	double timeStep;
+	//bool hinata;
+	//float dampFactor;
+	double mass;
+	Vec3d position;
+	Vec3d velocity;
+	Vec3d netForce;
+	
+
+
+public:
+	Particle(Vec3d p, double m, double t) : position(p), mass(m),timeStep(t) {}
+
+	void setParticle(Vec3d p, Vec3d v, Vec3d n) { position = p; velocity = v; netForce = n; }
+	void setNetForce(Vec3d f) { netForce = f; }
+	void setTimeStep(float value) { timeStep = value; }
+	Vec3d getPosition() const { return position; }
+	Vec3d getVelocity() const { return velocity; }
+	Vec3d getNetForce() const { return netForce; }
+	double getMass() const { return mass; }
+
+	
+	void update(double timeStep);
+	void draw();
+
+
+};
 
 
 class ParticleSystem {
