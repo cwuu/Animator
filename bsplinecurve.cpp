@@ -7,6 +7,7 @@
 
 void BSplineCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,std::vector<Point>& ptvEvaluatedCurvePts,const float& fAniLength,const bool& bWrap,const bool& bAdaptive) const
 {
+	
 	ptvEvaluatedCurvePts.clear();
 	std::vector<Point> curve;
 
@@ -20,14 +21,17 @@ void BSplineCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,s
 	}
 	else 
 	{
-		//ptvEvaluatedCurvePts.push_back(Point(0, ptvCtrlPts[0].y));
-		//ptvEvaluatedCurvePts.push_back(Point(fAniLength, ptvCtrlPts.back().y));
+		ptvEvaluatedCurvePts.push_back(Point(0, ptvCtrlPts[0].y));
+		ptvEvaluatedCurvePts.push_back(Point(fAniLength, ptvCtrlPts.back().y));
 		curve.push_back(ptvCtrlPts[0]);
 		curve.push_back(ptvCtrlPts[0]);
 		curve.insert(curve.end(), ptvCtrlPts.begin(), ptvCtrlPts.end());
 		curve.push_back(ptvCtrlPts.back());
 		curve.push_back(ptvCtrlPts.back());
 	}
+	
+
+
 	/*
 	displaybspline
 	for (i=0 to n-3)

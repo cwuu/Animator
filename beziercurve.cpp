@@ -2,7 +2,7 @@
 #include "mat.h"
 #include "vec.h"
 
-#define SAMPLE 15
+#define SAMPLE 150
 
 void BezierCurveEvaluator::displayBezier(std::vector<Point>& ptvEvaluatedCurvePts, const Vec4d& px, const Vec4d& py) const
 {
@@ -53,7 +53,7 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, s
 	/*
 	wrapping: (similar to the concept in linecurvewvaluator)
 	case1:node is on the generated curve
-	case2: if it isnt, then use ;omear omterpolation
+	case2: if it isnt, then use ;omear interpolation
 	*/
 
 	ptvEvaluatedCurvePts.clear();
@@ -63,8 +63,8 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, s
 	if (bWrap == true)
 		curve.push_back(Point(ptvCtrlPts[0].x + fAniLength, ptvCtrlPts[0].y)); //make the beginning link to the end
 
-	ptvEvaluatedCurvePts.clear();
-	ptvEvaluatedCurvePts.push_back(*(ptvCtrlPts.begin()));
+	//ptvEvaluatedCurvePts.clear();
+	//ptvEvaluatedCurvePts.push_back(*(ptvCtrlPts.begin()));
 
 	int i = 0;
 	bool Iswrapped = false;
@@ -99,6 +99,7 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, s
 				if (bWrap == true && bezier_point.x > fAniLength)
 				{
 					const float x_mod = fmod(bezier_point.x, fAniLength);
+					//deal with the ending point
 					if (Iswrapped == false)
 					{
 						const Point prev_point(ptvEvaluatedCurvePts.back());
@@ -137,7 +138,7 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, s
 			const float percent = 1.0f - ptvCtrlPts.front().x / ((ptvCtrlPts.front().x + fAniLength) - ptvCtrlPts.back().x);
 			const float y = ptvCtrlPts.back().y + percent*(ptvCtrlPts[0].y - ptvCtrlPts.back().y);
 			ptvEvaluatedCurvePts.push_back(Point(fAniLength, y));
-			ptvEvaluatedCurvePts.push_back(Point(0, ptvEvaluatedCurvePts[i].y));
+			ptvEvaluatedCurvePts.push_back(Point(0, y));
 		}
 	}
 	else 
