@@ -1,7 +1,11 @@
 ﻿  beziercurve.cpp
 beziercurve.cpp(26): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
 beziercurve.cpp(73): warning C4018: '<': signed/unsigned mismatch
-beziercurve.cpp(97): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-beziercurve.cpp(128): warning C4018: '<': signed/unsigned mismatch
+beziercurve.cpp(96): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+beziercurve.cpp(127): warning C4018: '<': signed/unsigned mismatch
+  bsplinecurve.cpp
+bsplinecurve.cpp(44): warning C4018: '<': signed/unsigned mismatch
+bsplinecurve.cpp(53): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+  Generating Code...
   Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
   Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)
