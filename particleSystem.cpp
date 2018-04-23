@@ -11,7 +11,7 @@
 #include "modelerdraw.h"
 #include <ctime>
 
-#define ParticleSize 3
+#define ParticleSize 7
 #define gravity 9.8
 #define K 0.25 //todo: find realistic k
 
