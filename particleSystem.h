@@ -19,6 +19,7 @@
 #include "vec.h"
 #include <vector>
 #include <FL/gl.h>
+#include <map>
 using namespace std;
 
 
@@ -36,11 +37,12 @@ private:
 
 
 public:
-	Particle(Vec3d p, double m, double t) : position(p), mass(m),timeStep(t) {}
+	Particle(Vec3d p, double m) : position(p), mass(m) {}
 
 	void setParticle(Vec3d p, Vec3d v, Vec3d n) { position = p; velocity = v; netForce = n; }
 	void setNetForce(Vec3d f) { netForce = f; }
 	void setTimeStep(float value) { timeStep = value; }
+	void setVelocity(Vec3d v) { velocity = v; }
 	Vec3d getPosition() const { return position; }
 	Vec3d getVelocity() const { return velocity; }
 	Vec3d getNetForce() const { return netForce; }
@@ -74,7 +76,7 @@ public:
 
 	// This fxn should save the configuration of all particles
 	// at current time t.
-	virtual void bakeParticles(float t);
+	virtual void bakeParticles(double t);
 
 	// This function should compute forces acting on all particles
 	// and update their state (pos and vel) appropriately.
@@ -107,10 +109,11 @@ public:
 	void setDirty(bool d) { dirty = d; }
 
 
-
-protected:
+public:
 	
-
+	float currentT;
+	vector<Particle> particles;
+	std::map<double, vector<Particle>> bakeContainer;
 
 	/** Some baking-related state **/
 	float bake_fps;						// frame rate at which simulation was baked

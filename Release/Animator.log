@@ -1,2 +1,21 @@
-﻿  Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
+﻿  robotarm.cpp
+robotarm.cpp(112): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(136): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(137): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(138): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(139): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(498): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(553): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(562): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(593): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(605): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(644): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(671): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(683): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(698): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(734): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(740): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(797): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(803): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+  Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
   Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)

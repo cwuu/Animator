@@ -14,6 +14,8 @@
 #include "modelerglobals.h"
 #include "particleSystem.h"
 #include "metaball.h"
+#include "mat.h"
+#include "vec.h"
 using namespace std;
 
 
@@ -30,6 +32,44 @@ public:
 	bool heart_beat = false;
 	int beat_count = 0;
 };
+
+
+
+
+
+
+void SpawnParticles(Mat4d CameraMatrix, int num)
+{
+	Mat4d WorldMatrix = CameraMatrix.inverse() * getModelViewMatrix();
+	Vec4d position = WorldMatrix *  Vec4d(0.5, 1, -2, 1);
+	ParticleSystem *ps = ModelerApplication::Instance()->GetParticleSystem();
+	//ps->SpawnParticles(Vec3d(position[0], position[1], position[2]), num);
+	Vec3d pos = Vec3d(position[0], position[1], position[2]);
+	map<double, std::vector<Particle>>::iterator it = ps->bakeContainer.find(ps->currentT + ps->bake_fps);
+	bool BakeExisted = (it != ps->bakeContainer.end());
+
+	if (ps->isSimulate() == true)
+	{
+		if (BakeExisted == false)
+		{
+			for (int i = 0; i < num; ++i)
+			{
+				double mass = rand() % 5 + 0.2;
+				Particle p = Particle(pos, mass);
+				double F = rand() % 10 / 10.0 + 0.2;
+				double theta = rand() % 360 / 57.3;
+
+				double zSpeed = -(rand() % 10 / 10.0 + 5);
+				// double ySpeed = cos(theta) * F;
+				// double xSpeed = sin(theta) * F;
+				double ySpeed = 0;
+				double xSpeed = -(rand() % 10 / 10.0) + 0.5;
+				p.setVelocity(Vec3d(xSpeed, ySpeed, zSpeed));
+
+			}
+		}
+	}
+}
 
 // We need to make a creator function, mostly because of
 // nasty API stuff that we'd rather stay away from.
@@ -90,6 +130,8 @@ void SampleModel::draw()
 	// matrix stuff.  Unless you want to fudge directly with the 
 	// projection matrix, don't bother with this ...
 	ModelerView::draw();
+
+	Mat4d CameraMatrix = getModelViewMatrix();
 
 	GLfloat lightPosition0[] = { VAL(LIGHT_X), VAL(LIGHT_Y), VAL(LIGHT_Z), 0.0f };
 	GLfloat lightDiffuse0[] = { VAL(LIGHT_R), VAL(LIGHT_G), VAL(LIGHT_B) };
@@ -163,7 +205,7 @@ void SampleModel::draw()
 			glRotated(-90, 1.0, 0.0, 0.0);
 			drawCylinder(VAL(HEIGHT) + 0.1, 0.4, 0.3);//NECK
 
-													  //draw head
+			//draw head
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
 				setDiffuseColor(COLOR_DARK_RED);
@@ -175,6 +217,9 @@ void SampleModel::draw()
 
 				glutSolidDodecahedron();
 				glPopMatrix();
+
+				//Particle System
+				SpawnParticles(CameraMatrix, VAL(PARTICLE_NUM));
 
 				//draw nose
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
@@ -841,6 +886,12 @@ int main()
 	controls[CONSTRAINT_Y] = ModelerControl("Constraint 1 Y", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Z] = ModelerControl("Constraint 1 Z", -5, 5, 0.1, 0);
 	controls[METABALL] = ModelerControl("metaball", 0, 1, 1, 0);
+	controls[PARTICLE_NUM] = ModelerControl("Number of particel", 0, 50, 1, 5);
+
+	// You should create a ParticleSystem object ps here and then
+	// call ModelerApplication::Instance()->SetParticleSystem(ps)
+	// to hook it up to the animator interface.
+
 
 	ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
 	return ModelerApplication::Instance()->Run();

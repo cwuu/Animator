@@ -9,7 +9,7 @@
 #include <cstdio>
 
 #include "modelerglobals.h"
-
+#include "mat.h"
 
 enum DrawModeSetting_t 
 { NONE=0, NORMAL, WIREFRAME, FLATSHADE, };
@@ -97,4 +97,5 @@ void drawTriangle( double x1, double y1, double z1,
 void drawTorus(GLdouble r1, GLdouble r2);
 void drawTriangularPolygon(double a, double b, double h, double theta);
 void drawLSystem(int iteration);
+Mat4d getModelViewMatrix();
 #endif

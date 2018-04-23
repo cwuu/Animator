@@ -9,16 +9,18 @@
 #include <math.h>
 #include <limits.h>
 #include "modelerdraw.h"
+#include <ctime>
 
 #define ParticleSize 3
 #define gravity 9.8
-#define K 0.25 //todo: try realistic k
+#define K 0.25 //todo: find realistic k
 
 void Particle::update(double timeStep)
 {
 	velocity = velocity + netForce / mass * timeStep;
 	position = position + velocity * timeStep;
-	Vec3d force = this->getNetForce()- K * this->getVelocity()+ gravity * this->getMass();
+	Vec3d force = this->getNetForce() - K * this->getVelocity();
+	force = force + Vec3d(gravity, gravity, gravity)* this->getMass();
 	setNetForce(force);
 
 }
@@ -41,10 +43,8 @@ void Particle::draw()
 ParticleSystem::ParticleSystem() 
 {
 	// TODO
-
+	srand(time(0));
 }
-
-
 
 
 
@@ -55,6 +55,7 @@ ParticleSystem::ParticleSystem()
 ParticleSystem::~ParticleSystem() 
 {
 	// TODO
+	particles.clear();
 
 }
 
@@ -110,6 +111,25 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 {
 
 	// TODO
+	bake_fps = t - currentT; // bake sampling rate
+	currentT = t;
+
+	map<double, std::vector<Particle>>::iterator it = bakeContainer.find(t);
+	bool BakeExisted = (it != bakeContainer.end());
+
+	if (isSimulate() == true)
+	{
+		if (BakeExisted == false)
+		{
+			for (int i = 0; i < particles.size(); ++i)
+				particles[i].update(bake_fps);
+
+			bakeParticles(t);
+		}
+		else
+			particles = bakeContainer[t];
+
+	}
 }
 
 
@@ -118,6 +138,11 @@ void ParticleSystem::drawParticles(float t)
 {
 
 	// TODO
+	if (isSimulate())
+	{
+		for (int i = 0; i < particles.size(); ++i)
+			particles[i].draw();
+	}
 }
 
 
@@ -126,10 +151,12 @@ void ParticleSystem::drawParticles(float t)
 
 /** Adds the current configuration of particles to
   * your data structure for storing baked particles **/
-void ParticleSystem::bakeParticles(float t) 
+void ParticleSystem::bakeParticles(double t) 
 {
 
 	// TODO
+	// map (container) + pair (linked)
+	bakeContainer.insert(std::pair<double, std::vector<Particle>>(t, particles));
 }
 
 /** Clears out your data structure of baked particles */
@@ -137,6 +164,7 @@ void ParticleSystem::clearBaked()
 {
 
 	// TODO
+	bakeContainer.clear();
 }
 
 
