@@ -617,9 +617,12 @@ void ModelerUI::activeCurvesChanged()
 	if (m_pwndGraphWidget->currCurveWrap() >= 0) {
 		m_pbtWrap->activate();
 		m_pbtWrap->value(m_pwndGraphWidget->currCurveWrap());
+		m_pbtAdaptive->activate();
+		m_pbtAdaptive->value(m_pwndGraphWidget->currCurveAdaptive());
 	}
 	else {
 		m_pbtWrap->deactivate();
+		m_pbtAdaptive->deactivate();
 	}
 }
 
@@ -909,6 +912,8 @@ m_bSaveMovie(false)
 	m_pbtSimulate->callback((Fl_Callback*)cb_simulate);
 	m_psldrFPS->callback((Fl_Callback*)cb_fps);
 
+	m_pbtAdaptive->callback((Fl_Callback*)cb_adaptive);
+
 	m_pwndMainWnd->callback((Fl_Callback*)cb_hide);
 	m_pwndMainWnd->when(FL_HIDE);
 
@@ -1005,4 +1010,19 @@ void ModelerUI::autoLoadNPlay()
 		simulate(true);
 		animate(true);
 	}
+}
+
+inline void ModelerUI::cb_adaptive_i(Fl_Light_Button*, void*)
+{
+	if (m_pbtAdaptive->value() == 1)
+		m_pwndGraphWidget->currCurveAdaptive(true);
+	else if (m_pbtAdaptive->value() == 0)
+		m_pwndGraphWidget->currCurveAdaptive(false);
+
+	m_pwndGraphWidget->redraw();
+}
+
+void ModelerUI::cb_adaptive(Fl_Light_Button* o, void* v)
+{
+	((ModelerUI*)(o->user_data()))->cb_adaptive_i(o, v);
 }

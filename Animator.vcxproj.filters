@@ -102,6 +102,21 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="beziercurve.cpp">
+      <Filter>Source Files\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="bsplinecurve.cpp">
+      <Filter>Source Files\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="catnullromcurve.cpp">
+      <Filter>Source Files\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="Marching_Cube.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="metaball.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="curve.h">
@@ -168,6 +183,21 @@
       <Filter>Header Files\Model.</Filter>
     </ClInclude>
     <ClInclude Include="texture.h">
+      <Filter>Header Files\Model.</Filter>
+    </ClInclude>
+    <ClInclude Include="beziercurve.h">
+      <Filter>Header Files\Curves.</Filter>
+    </ClInclude>
+    <ClInclude Include="bsplinecurve.h">
+      <Filter>Header Files\Curves.</Filter>
+    </ClInclude>
+    <ClInclude Include="catnullromcurve.h">
+      <Filter>Header Files\Curves.</Filter>
+    </ClInclude>
+    <ClInclude Include="Marching_Cube.h">
+      <Filter>Header Files\Model.</Filter>
+    </ClInclude>
+    <ClInclude Include="metaball.h">
       <Filter>Header Files\Model.</Filter>
     </ClInclude>
   </ItemGroup>

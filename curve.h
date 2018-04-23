@@ -53,6 +53,9 @@ public:
 	void toStream(std::ostream& output_stream) const;
 	void fromStream(std::istream& input_stream);
 
+	void adaptive(bool bAdaptive);
+	bool adaptive() const;
+
 protected:
 	void init(const float fStartYValue = 0.0f);
 	void reevaluate(void) const;

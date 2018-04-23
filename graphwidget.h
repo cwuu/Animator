@@ -114,6 +114,9 @@ public:
 	Point windowToGrid( Point p ) ;
 	Point gridToWindow( Point p ) ;
 
+	int currCurveAdaptive() const;
+	void currCurveAdaptive(bool bWrap);
+
 protected:
 	int m_iEventToDo;
 	bool m_bHasEvent;

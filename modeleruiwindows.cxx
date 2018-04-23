@@ -129,6 +129,11 @@ ModelerUIWindows::ModelerUIWindows() {
             o->labelsize(12);
             o->user_data((void*)(this));
           }
+		  {
+			Fl_Light_Button* o = m_pbtAdaptive = new Fl_Light_Button(415, 470, 70, 20, "Adaptive");
+			o->labelsize(12);
+			o->user_data((void*)(this));
+		  }
           o->end();
         }
         o->end();

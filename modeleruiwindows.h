@@ -74,5 +74,6 @@ public:
   Fl_Button *m_pbtRemoveAllCamKeyFrames;
   Fl_Window *m_pwndModelerWnd;
   ModelerView *m_pwndModelerView;
+  Fl_Light_Button *m_pbtAdaptive;
 };
 #endif
