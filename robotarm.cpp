@@ -4,10 +4,10 @@
 #pragma warning (disable : 4305)
 #pragma warning (disable : 4244)
 #pragma warning(disable : 4786)
-
 #include "modelerview.h"
 #include "modelerapp.h"
 #include "modelerdraw.h"
+#include "texture.h"
 #include <FL/gl.h>
 #include <cstring>
 #include <FL/glut.h>
@@ -452,6 +452,99 @@ void SampleModel::draw()
 	}
 	else
 	{
+		// skybox for the background
+		if(VAL(SKYBOX) == 1 ){
+			//printf("skybox");
+			// Store the current matrix
+			glPushMatrix();
+
+			// Reset and transform the matrix.
+
+			//glLoadIdentity();
+			//glTranslated(0, 1, 0);
+			glScaled(80, 80, 80);
+			//camera->gluLookAt(
+			//	0, 0, 0,
+			//	camera->x(), camera->y(), camera->z(),
+			//	0, 1, 0);
+			//
+			// Enable/Disable features
+			glPushAttrib(GL_ENABLE_BIT);
+			glEnable(GL_TEXTURE_2D);
+			glDisable(GL_DEPTH_TEST);
+			glDisable(GL_LIGHTING);
+			glDisable(GL_BLEND);
+			glEnable(GL_DEPTH_TEST);
+			// Just in case we set all vertices to white.
+			//glColor4f(1, 1, 1, 1);
+			setAmbientColor(.1f, .1f, 0.1f);
+			setDiffuseColor(COLOR_WHITE);
+			//generate texture
+			Texture skybox; 
+			//skybox.loadBMP_custom("skybox/cliffFront.bmp");
+			
+				//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+			// Render the front quad
+			glBindTexture(GL_TEXTURE_2D, skybox.loadBMP_custom("skybox/cliffFront.bmp"));
+			//skybox.loadBMP_custom("skybox/cliffFront.bmp");
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 0); glVertex3f(0.5f, -0.5f, -0.5f);
+			glTexCoord2f(1, 0); glVertex3f(-0.5f, -0.5f, -0.5f);
+			glTexCoord2f(1, 1); glVertex3f(-0.5f, 0.5f, -0.5f);
+			glTexCoord2f(0, 1); glVertex3f(0.5f, 0.5f, -0.5f);
+			glEnd();
+
+			// Render the left quad
+			glBindTexture(GL_TEXTURE_2D, skybox.loadBMP_custom("skybox/cliffLeft.bmp"));
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 0); glVertex3f(0.5f, -0.5f, 0.5f);
+			glTexCoord2f(1, 0); glVertex3f(0.5f, -0.5f, -0.5f);
+			glTexCoord2f(1, 1); glVertex3f(0.5f, 0.5f, -0.5f);
+			glTexCoord2f(0, 1); glVertex3f(0.5f, 0.5f, 0.5f);
+			glEnd();
+
+			// Render the back quad
+			glBindTexture(GL_TEXTURE_2D, skybox.loadBMP_custom("skybox/cliffBack.bmp"));
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 0); glVertex3f(-0.5f, -0.5f, 0.5f);
+			glTexCoord2f(1, 0); glVertex3f(0.5f, -0.5f, 0.5f);
+			glTexCoord2f(1, 1); glVertex3f(0.5f, 0.5f, 0.5f);
+			glTexCoord2f(0, 1); glVertex3f(-0.5f, 0.5f, 0.5f);
+
+			glEnd();
+
+			// Render the right quad
+			glBindTexture(GL_TEXTURE_2D, skybox.loadBMP_custom("skybox/cliffRight.bmp"));
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 0); glVertex3f(-0.5f, -0.5f, -0.5f);
+			glTexCoord2f(1, 0); glVertex3f(-0.5f, -0.5f, 0.5f);
+			glTexCoord2f(1, 1); glVertex3f(-0.5f, 0.5f, 0.5f);
+			glTexCoord2f(0, 1); glVertex3f(-0.5f, 0.5f, -0.5f);
+			glEnd();
+
+			// Render the top quad
+			glBindTexture(GL_TEXTURE_2D,skybox.loadBMP_custom("skybox/cliffTop.bmp"));
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 1); glVertex3f(-0.5f, 0.5f, -0.5f);
+			glTexCoord2f(0, 0); glVertex3f(-0.5f, 0.5f, 0.5f);
+			glTexCoord2f(1, 0); glVertex3f(0.5f, 0.5f, 0.5f);
+			glTexCoord2f(1, 1); glVertex3f(0.5f, 0.5f, -0.5f);
+			glEnd();
+
+			// Render the bottom quad
+			glBindTexture(GL_TEXTURE_2D, skybox.loadBMP_custom("skybox/cliffBottom.bmp"));
+			glBegin(GL_QUADS);
+			glTexCoord2f(0, 0); glVertex3f(-0.5f, -0.5f, -0.5f);
+			glTexCoord2f(0, 1); glVertex3f(-0.5f, -0.5f, 0.5f);
+			glTexCoord2f(1, 1); glVertex3f(0.5f, -0.5f, 0.5f);
+			glTexCoord2f(1, 0); glVertex3f(0.5f, -0.5f, -0.5f);
+			glEnd();
+
+			// Restore enable bits and matrix
+			glPopAttrib();
+			glPopMatrix();
+			
+		}
 		//draw body
 		setAmbientColor(.1f, .1f, .1f);
 		setDiffuseColor(COLOR_DARK_RED);
@@ -886,6 +979,7 @@ int main()
 	controls[CONSTRAINT_Y] = ModelerControl("Constraint 1 Y", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Z] = ModelerControl("Constraint 1 Z", -5, 5, 0.1, 0);
 	controls[METABALL] = ModelerControl("metaball", 0, 1, 1, 0);
+	controls[SKYBOX] = ModelerControl("skybox", 0, 1, 1, 0);
 	controls[PARTICLE_NUM] = ModelerControl("Number of particel", 0, 50, 1, 5);
 
 	// You should create a ParticleSystem object ps here and then
