@@ -31,6 +31,8 @@ public:
 	bool feet_dir = true; // false= negative, true = positive
 	bool heart_beat = false;
 	int beat_count = 0;
+	int it = 0;
+	void default_draw();
 };
 
 
@@ -80,10 +82,49 @@ ModelerView* createSampleModel(int x, int y, int w, int h, char *label)
 
 // We are going to override (is that the right word?) the draw()
 // method of ModelerView to draw out SampleModel
-void SampleModel::draw()
-{
-	//the light
+//void SampleModel::draw() {
+	// motion blur by accumulation buffer
+	//if (VAL(ACCUMULATION_BUFFER)) {
+		//glClear(GL_ACCUM_BUFFER_BIT);
+		//for (int i = 0; i < 4; i++)
+		//{
+			//glPushMatrix();
+			//glRotated(i * 10., 0, 1, 0);
+		//	default_draw();
+			//glPopMatrix();
+			//glDrawBuffer(GL_FRONT);
+			//glAccum(GL_ACCUM, 0.25);
+			//glDrawBuffer(GL_BACK);
+		//}
+		//glAccum(GL_RETURN, 1.0);
+	//}
+	//else default_draw();
+//}
 
+VOID SampleModel::draw() {
+	if (VAL(ACCUMULATION_BUFFER)) {
+		glClear(GL_ACCUM_BUFFER_BIT);
+		while (it < 4) {
+			it++;
+			default_draw();
+			glAccum(GL_RETURN, 1.0);
+			glDrawBuffer(GL_FRONT);
+			glAccum(GL_RETURN, 4.0 / (it + 1));
+			//glClear(GL_ACCUM_BUFFER_BIT);
+			glDrawBuffer(GL_BACK);
+			
+			printf("hahaha");
+		}
+			glAccum(GL_ACCUM, float(1.0 / 4));
+
+		//}
+		//glAccum(GL_RETURN, 1.f);
+	}
+	else default_draw();
+}
+void SampleModel::default_draw()
+{
+	
 
 
 	/*if (ModelerApplication::Instance()->m_animating == true)
@@ -109,6 +150,13 @@ void SampleModel::draw()
 
 	}
 	*/
+	
+	if (VAL(ACCUMULATION_BUFFER)) {
+		if(it == 0 )
+			glClear(GL_ACCUM_BUFFER_BIT);
+		//glAccum(GL_ACCUM, 0.25);
+		//glDrawBuffer(GL_FRONT);
+	}
 	if (VAL(MOOD) == true)
 	{
 
@@ -452,6 +500,15 @@ void SampleModel::draw()
 	}
 	else
 	{
+		
+		
+		// height field 
+		if (VAL(HEIGHT_FIELD)) {
+			//TODO
+			int height_field_range = 10; //unit of field 
+			int height_field_height = HEIGHT;
+			//for(int y = 0; y< heightField; h ++)
+		}
 		// skybox for the background
 		if(VAL(SKYBOX) == 1 ){
 			//printf("skybox");
@@ -930,8 +987,7 @@ void SampleModel::draw()
 		}
 
 	}
-
-
+	
 }
 
 int main()
@@ -979,8 +1035,10 @@ int main()
 	controls[CONSTRAINT_Y] = ModelerControl("Constraint 1 Y", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Z] = ModelerControl("Constraint 1 Z", -5, 5, 0.1, 0);
 	controls[METABALL] = ModelerControl("metaball", 0, 1, 1, 0);
-	controls[SKYBOX] = ModelerControl("skybox", 0, 1, 1, 0);
+	controls[SKYBOX] = ModelerControl("Skybox", 0, 1, 1, 0);
+	controls[HEIGHT_FIELD] = ModelerControl("Height Field", 0, 1, 1, 0);
 	controls[PARTICLE_NUM] = ModelerControl("Number of particel", 0, 50, 1, 5);
+	controls[ACCUMULATION_BUFFER] = ModelerControl("accumulation buffer", 0, 1, 1, 0);
 
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
