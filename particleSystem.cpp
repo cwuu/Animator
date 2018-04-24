@@ -20,13 +20,13 @@ void Particle::update(double timeStep)
 	velocity = velocity + netForce / mass * timeStep;
 	position = position + velocity * timeStep;
 	Vec3d force = this->getNetForce() - K * this->getVelocity();
-	force = force + Vec3d(gravity, gravity, gravity)* this->getMass();
+	force = force + Vec3d(0.0, -1.0, 0.0)* this->getMass()*gravity;
 	setNetForce(force);
 
 }
 void Particle::draw()
 {
-	setDiffuseColor(0, 0, 1); 
+	setDiffuseColor(1, 0, 0); 
 	glPushMatrix();
 		glPointSize(ParticleSize);
 		glBegin(GL_POINTS);

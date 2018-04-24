@@ -18,7 +18,7 @@
 #include "catnullromcurve.h"
 #include "beziercurve.h"
 #include "bsplinecurve.h" 
-
+#include "c2interpolatingcurve.h"
 #define CURVE_TYPE_LINEAR 0
 #define CURVE_TYPE_BSPLINE 1
 #define CURVE_TYPE_BEZIER 2

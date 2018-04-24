@@ -1,21 +1,13 @@
-﻿  robotarm.cpp
-robotarm.cpp(112): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(136): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(137): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(138): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(139): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(498): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(553): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(562): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(593): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(605): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(644): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(671): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(683): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(698): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(734): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(740): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(797): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(803): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-  Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
-  Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)
+﻿  c2interpolatingcurveevaluator.cpp
+c:\users\cwuu\desktop\animator\c2interpolatingcurve.h(19): error C2061: syntax error: identifier 'vector'
+c2interpolatingcurveevaluator.cpp(31): error C2660: 'C2InterpolatingEvaluator::_evaluateDerivative': function does not take 3 arguments
+c2interpolatingcurveevaluator.cpp(67): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c2interpolatingcurveevaluator.cpp(71): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c2interpolatingcurveevaluator.cpp(79): error C2511: 'void C2InterpolatingEvaluator::_evaluateDerivative(std::vector<float,std::allocator<_Ty>> &,std::vector<Point,std::allocator<Point>>,int) const': overloaded member function not found in 'C2InterpolatingEvaluator'
+          with
+          [
+              _Ty=float
+          ]
+  c:\users\cwuu\desktop\animator\c2interpolatingcurve.h(6): note: see declaration of 'C2InterpolatingEvaluator'
+c2interpolatingcurveevaluator.cpp(88): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c2interpolatingcurveevaluator.cpp(90): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
