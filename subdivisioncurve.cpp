@@ -17,7 +17,7 @@ void SubdivisionCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlP
 		curve.push_back(Point(fAniLength, 0));
 	}
 
-	double k = 0;
+	
 	for(int k=0;k<10;++k)
 	{
 		if (curve.size() == 2)
@@ -43,10 +43,10 @@ void SubdivisionCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlP
 		{
 			float x = split[i].x + (split[i + 1].x - split[i].x) * Mask;
 			float y = split[i].y + (split[i + 1].y - split[i].y) * Mask;
-			split.push_back(Point(x, y));
+			avg.push_back(Point(x, y));
 		}
 		split.push_back(split.back());
-		curve = split;
+		curve = avg;
 
 	}
 

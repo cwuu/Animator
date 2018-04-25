@@ -141,6 +141,8 @@ private:
 
 	inline void cb_adaptive_i(Fl_Light_Button*, void*);
 	static void cb_adaptive(Fl_Light_Button*, void*);
+	static void cb_curveAvgMask(Fl_Slider* o, void* v);
+	inline void cb_curveAvgMask_i(Fl_Slider* o, void* v);
 };
 
 #endif

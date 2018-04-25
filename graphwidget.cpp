@@ -29,6 +29,7 @@
 #include "beziercurve.h"
 #include "bsplinecurve.h" 
 #include "c2interpolatingcurve.h"
+#include "subdivisioncurve.h"
 
 #define LEFT		1
 #define MIDDLE		2
@@ -124,7 +125,7 @@ m_flcCurrCurve(FL_BLACK)
 	m_ppceCurveEvaluators[CURVE_TYPE_CATMULLROM] = new CatnullRomEvaluator();
 	// Note that C2-Interpolating curve is not a requirement
 	m_ppceCurveEvaluators[CURVE_TYPE_C2INTERPOLATING] = new C2InterpolatingEvaluator();
-
+	m_ppceCurveEvaluators[CURVE_TYPE_SUBDIVISION] = new SubdivisionCurveEvaluator();
 }
 
 GraphWidget::~GraphWidget()

@@ -19,12 +19,15 @@
 #include "beziercurve.h"
 #include "bsplinecurve.h" 
 #include "c2interpolatingcurve.h"
+#include "subdivisioncurve.h"
+
 #define CURVE_TYPE_LINEAR 0
 #define CURVE_TYPE_BSPLINE 1
 #define CURVE_TYPE_BEZIER 2
 #define CURVE_TYPE_CATMULLROM 3
 #define CURVE_TYPE_C2INTERPOLATING 4
-#define CURVE_TYPE_COUNT 5
+#define CURVE_TYPE_SUBDIVISION 5
+#define CURVE_TYPE_COUNT 6
 
 #define CURVE_COLOR_COUNT 6
 
@@ -119,6 +122,10 @@ public:
 
 	int currCurveAdaptive() const;
 	void currCurveAdaptive(bool bWrap);
+
+	void setAvgMask(float value) {
+		((SubdivisionCurveEvaluator*)m_ppceCurveEvaluators[CURVE_TYPE_SUBDIVISION])->setAvgMask(value);
+	}
 
 protected:
 	int m_iEventToDo;

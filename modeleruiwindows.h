@@ -75,5 +75,8 @@ public:
   Fl_Window *m_pwndModelerWnd;
   ModelerView *m_pwndModelerView;
   Fl_Light_Button *m_pbtAdaptive;
+  Fl_Slider *m_curveAveragingMask;
+  Fl_Slider *m_SubdivideThreshold;
+
 };
 #endif

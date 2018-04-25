@@ -17,7 +17,7 @@ public:
 		const float& fAniLength,
 		const bool& bWrap,
 		const bool& bAdaptive) const;
-	void setMask(float value) { Mask = value; }
+	void setAvgMask(float value) { Mask = value; }
 
 private:
 	float Mask;
