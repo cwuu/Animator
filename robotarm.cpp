@@ -7,6 +7,7 @@
 #include "modelerview.h"
 #include "modelerapp.h"
 #include "modelerdraw.h"
+#include "bitmap.h"
 #include "texture.h"
 #include <FL/gl.h>
 #include <cstring>
@@ -31,7 +32,6 @@ public:
 	bool feet_dir = true; // false= negative, true = positive
 	bool heart_beat = false;
 	int beat_count = 0;
-	int it = 0;
 	void default_draw();
 };
 
@@ -104,18 +104,21 @@ ModelerView* createSampleModel(int x, int y, int w, int h, char *label)
 VOID SampleModel::draw() {
 	if (VAL(ACCUMULATION_BUFFER)) {
 		glClear(GL_ACCUM_BUFFER_BIT);
-		while (it < 4) {
-			it++;
+		for (int it = 0 ; it < 4; it ++ ){
+			//glPushMatrix();
+			//glRotated(it*10., 0, 1, 0);
+			glAccum(GL_RETURN, float(it) / 4.0);
 			default_draw();
-			glAccum(GL_RETURN, 1.0);
-			glDrawBuffer(GL_FRONT);
-			glAccum(GL_RETURN, 4.0 / (it + 1));
+			//glPopMatrix();
+			glAccum(GL_ACCUM, 1.0/4.0);
+			//glDrawBuffer(GL_FRONT);
+			//glAccum(GL_RETURN, float(it) / 4.0);
 			//glClear(GL_ACCUM_BUFFER_BIT);
-			glDrawBuffer(GL_BACK);
+			//glDrawBuffer(GL_BACK);
 			
-			printf("hahaha");
+			//printf("current it %d", it);
 		}
-			glAccum(GL_ACCUM, float(1.0 / 4));
+			glAccum(GL_RETURN, 1.f);
 
 		//}
 		//glAccum(GL_RETURN, 1.f);
@@ -150,13 +153,7 @@ void SampleModel::default_draw()
 
 	}
 	*/
-	
-	if (VAL(ACCUMULATION_BUFFER)) {
-		if(it == 0 )
-			glClear(GL_ACCUM_BUFFER_BIT);
-		//glAccum(GL_ACCUM, 0.25);
-		//glDrawBuffer(GL_FRONT);
-	}
+
 	if (VAL(MOOD) == true)
 	{
 
@@ -505,9 +502,65 @@ void SampleModel::default_draw()
 		// height field 
 		if (VAL(HEIGHT_FIELD)) {
 			//TODO
+			std::vector<Vec3f> Vertices;
+			//std::vector<Vec3f> Colors;
 			int height_field_range = 10; //unit of field 
 			int height_field_height = HEIGHT;
 			//for(int y = 0; y< heightField; h ++)
+			//texture bottom_map;
+			//bottom_map.loadBMP_custom("skybox/cliffFront.bmp");
+			int cliffWidth, cliffHeight=0;
+			unsigned char* height_field = readBMP("skybox/cliffBottom.bmp", cliffWidth, cliffHeight);
+			
+			for (int j = 0; j < cliffHeight; j ++) {
+				for (int i = 0; i < cliffWidth; i++) {
+					//get the color for pixel (i,j) and put it in vector colors
+					unsigned char* pixel = height_field + (i + j * cliffWidth) * 3; // the current pixel 
+					
+					Vec3f currColor = Vec3f((int)*pixel / float(225), (int)*(pixel + 1) / float(225), (int)*(pixel + 2) / float(225)); // color of the current pixel 
+					double field_intensity = 0.299*currColor[0] + 0.587*currColor[1] + 0.114* currColor[2];		//use the color as z value 
+					Vec3f newVertex = Vec3f(i , j, field_intensity*3) ;
+					
+					Vertices.push_back(newVertex);
+
+					//Vec3f destColor = Vec3f((newVertex[0], (int)*(currColor + 1) / float(225), (int)*(currColor + 2) / float(225))
+				}
+			}
+			//render the new height field map 
+			for (int j = 0; j < cliffHeight - 1; j++) {
+				for (int i = 0; i < cliffWidth - 1; i++) {
+					//the pixels in a square
+					int ver00 = i + j * cliffWidth;
+					int ver01 = i + j * cliffWidth + cliffWidth;
+					int ver10 = i + j * cliffWidth + 1;
+					int ver11 = i + j * cliffWidth + cliffWidth +  1;
+					// the color of the triangle is the average of the pixels 
+					// render 00,01,11 now 
+					//unsigned char* pixel = height_field + (ver00) * 3; // the current pixel 
+					//unsigned char* pixel01 = height_field + (ver01) * 3;
+					//unsigned char* pixel10 = height_field + (ver10) * 3;
+					//unsigned char* pixel11 = height_field + (ver11) * 3;
+					//Vec3f currColor = Vec3f((int)*pixel+ pixel01+ pixel11 / float(225), (int)*(pixel + 1) / float(225), (int)*(pixel + 2) / float(225));
+					
+					setDiffuseColor(Vertices[ver01][2]/3.0, Vertices[ver01][2] / 3.0, Vertices[ver01][2] / 3.0);
+					//printf("(\f,\f,\f), color \f \n", double(Vertices[ver00][0]), Vertices[ver00][1], Vertices[ver00][2]);
+					drawTriangle(Vertices[ver00][0]-2, Vertices[ver00][2]-10, Vertices[ver00][1]+5,
+						Vertices[ver01][0]-2, Vertices[ver01][2]-10, Vertices[ver01][1] + 5,
+						Vertices[ver11][0]-2, Vertices[ver11][2]-10, Vertices[ver11][1] + 5
+					);
+					printf("(%f,%f,%f)  ",Vertices[ver01][2] / 3.0, Vertices[ver01][2] / 3.0, Vertices[ver01][2] / 3.0);
+					//setDiffuseColor(Vertices[ver01][2], Vertices[ver01][2], Vertices[ver01][2]);
+					//setDiffuseColor(Vertices[ver01][2] / 3.0, Vertices[ver01][2] / 3.0, Vertices[ver01][2] / 3.0);
+					//setAmbientColor(0.0f, 0.0f, 0.0f);
+					setDiffuseColor(1.f, 0.0f, 1.f);
+					drawTriangle(Vertices[ver00][0] - 5, Vertices[ver00][2]-10, Vertices[ver00][1] - 5,
+						Vertices[ver10][0] - 5, Vertices[ver10][2]-10, Vertices[ver10][1] - 5,
+						Vertices[ver11][0] - 5, Vertices[ver11][2]-10, Vertices[ver11][1] - 5
+					);
+
+				}
+			}
+
 		}
 		// skybox for the background
 		if(VAL(SKYBOX) == 1 ){
