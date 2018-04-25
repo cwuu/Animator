@@ -619,10 +619,15 @@ void ModelerUI::activeCurvesChanged()
 		m_pbtWrap->value(m_pwndGraphWidget->currCurveWrap());
 		m_pbtAdaptive->activate();
 		m_pbtAdaptive->value(m_pwndGraphWidget->currCurveAdaptive());
+		m_psldrTension->activate();
+		m_psldrFlatness->value(CurveEvaluator::s_fFlatnessEpsilon);
+		m_psldrFlatness->activate();
 	}
 	else {
 		m_pbtWrap->deactivate();
 		m_pbtAdaptive->deactivate();
+		m_psldrTension->deactivate();
+		m_psldrFlatness->deactivate();
 	}
 }
 
@@ -631,6 +636,29 @@ void ModelerUI::cb_curveAvgMask(Fl_Value_Slider* o, void* v) {
 }
 void ModelerUI::cb_curveAvgMask_i(Fl_Value_Slider* o, void* v) {
 	m_pwndGraphWidget->setAvgMask(m_curveAveragingMask->value());
+}
+
+inline void ModelerUI::cb_tension_i(Fl_Slider*, void*)
+{
+	m_pwndGraphWidget->currCurveTension(m_psldrTension->value());
+	m_pwndGraphWidget->redraw();
+}
+
+void ModelerUI::cb_tension(Fl_Slider*o, void*v)
+{
+	((ModelerUI*)(o->user_data()))->cb_tension_i(o, v);
+}
+
+void ModelerUI::cb_flatness_i(Fl_Slider*, void*)
+{
+	CurveEvaluator::s_fFlatnessEpsilon = float(m_psldrFlatness->value());
+	m_pwndGraphWidget->redraw();
+	printf("flatness:%f\n", CurveEvaluator::s_fFlatnessEpsilon);
+}
+
+void ModelerUI::cb_flatness(Fl_Slider* o, void* v)
+{
+	((ModelerUI*)(o->user_data()))->cb_flatness_i(o, v);
 }
 
 void ModelerUI::currTime(float fTime) 
@@ -884,6 +912,11 @@ m_iFps(30),
 m_bAnimating(false),
 m_bSaveMovie(false)
 {
+
+	m_psldrFlatness->callback((Fl_Callback*)cb_flatness);
+	m_psldrFlatness->value(0.0001);
+	m_psldrTension->callback((Fl_Callback*)cb_tension);
+	m_psldrTension->value(0.5);
 	// setup all the callback functions...
 	m_pmiOpenAniScript->callback((Fl_Callback*)cb_openAniScript);
 	m_pmiSaveAniScript->callback((Fl_Callback*)cb_saveAniScript);

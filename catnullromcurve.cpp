@@ -4,7 +4,7 @@
 
 #define SAMPLE 150
 
-void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, std::vector<Point>& ptvEvaluatedCurvePts, const float& fAniLength, const bool& bWrap, const bool& bAdaptive) const
+void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, std::vector<Point>& ptvEvaluatedCurvePts, const float& fAniLength, const bool& bWrap, const bool& bAdaptive, const double& dTension) const
 {
 	ptvEvaluatedCurvePts.clear();
 	std::vector<Point> curve;

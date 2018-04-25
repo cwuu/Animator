@@ -143,6 +143,10 @@ private:
 	static void cb_adaptive(Fl_Light_Button*, void*);
 	static void cb_curveAvgMask(Fl_Value_Slider* o, void* v);
 	inline void cb_curveAvgMask_i(Fl_Value_Slider* o, void* v);
+	inline void cb_flatness_i(Fl_Slider*, void*);
+	static void cb_flatness(Fl_Slider*, void*);
+	inline void cb_tension_i(Fl_Slider*, void*);
+	static void cb_tension(Fl_Slider*, void*);
 };
 
 #endif

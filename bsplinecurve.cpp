@@ -5,7 +5,7 @@
 
 #define SAMPLE 15
 
-void BSplineCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,std::vector<Point>& ptvEvaluatedCurvePts,const float& fAniLength,const bool& bWrap,const bool& bAdaptive) const
+void BSplineCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,std::vector<Point>& ptvEvaluatedCurvePts,const float& fAniLength,const bool& bWrap,const bool& bAdaptive, const double& dTension) const
 {
 	
 	ptvEvaluatedCurvePts.clear();
@@ -57,7 +57,7 @@ void BSplineCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,s
 			combine.push_back(Point(convert_x[j], convert_y[j]));
 
 		std::vector<Point> epts;
-		beziercurve.evaluateCurve(combine, epts, fAniLength, false, bAdaptive);
+		beziercurve.evaluateCurve(combine, epts, fAniLength, false, bAdaptive,dTension);
 		ptvEvaluatedCurvePts.insert(ptvEvaluatedCurvePts.end(), epts.begin(), epts.end());
 
 

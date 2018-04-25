@@ -77,6 +77,9 @@ public:
   Fl_Light_Button *m_pbtAdaptive;
   Fl_Value_Slider *m_curveAveragingMask;
   Fl_Value_Slider *m_SubdivideThreshold;
+  Fl_Value_Slider *m_psldrTension;
+  Fl_Value_Slider *m_psldrFlatness;
+
 
 };
 #endif

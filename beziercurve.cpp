@@ -48,7 +48,7 @@ void BezierCurveEvaluator::displayBezier(std::vector<Point>& ptvEvaluatedCurvePt
 		displayBezier(ptvEvaluatedCurvePts, Vec4d(Q.x, V__[1].x, V_[2].x, V[3].x), Vec4d(Q.y, V__[1].y, V_[2].y, V[3].y));
 	}
 }
-void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, std::vector<Point>& ptvEvaluatedCurvePts, const float& fAniLength, const bool& bWrap, const bool& bAdaptive) const
+void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, std::vector<Point>& ptvEvaluatedCurvePts, const float& fAniLength, const bool& bWrap, const bool& bAdaptive, const double& dTension) const
 {
 	/*
 	wrapping: (similar to the concept in linecurvewvaluator)

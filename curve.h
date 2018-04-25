@@ -55,7 +55,8 @@ public:
 
 	void adaptive(bool bAdaptive);
 	bool adaptive() const;
-
+	double tension();
+	void tension(double tension);
 protected:
 	void init(const float fStartYValue = 0.0f);
 	void reevaluate(void) const;
@@ -71,6 +72,7 @@ protected:
 	float m_fMaxX;
 	bool m_bWrap;
 	bool m_bAdaptive;
+	double m_dTension;
 	static float s_fCtrlPtXEpsilon;
 };
 

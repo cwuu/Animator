@@ -10,7 +10,8 @@ void C2InterpolatingEvaluator::evaluateCurve(const std::vector<Point>& controlPo
 	std::vector<Point>& evaluatedPoints,
 	const float& animationLength,
 	const bool& bWrap,
-	const bool& bAdaptive) const
+	const bool& bAdaptive,
+	const double& dTension) const
 {
 	evaluatedPoints.clear();
 

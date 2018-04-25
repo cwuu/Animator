@@ -6,7 +6,8 @@ void SubdivisionCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlP
 	std::vector<Point>& ptvEvaluatedCurvePts,
 	const float& fAniLength,
 	const bool& bWrap,
-	const bool& bAdaptive) const {
+	const bool& bAdaptive, 
+	const double& dTension) const {
 
 	vector<Point> curve;
 	curve.assign(ptvCtrlPts.begin(), ptvCtrlPts.end());

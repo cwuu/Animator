@@ -126,7 +126,10 @@ public:
 	void setAvgMask(float value) {
 		((SubdivisionCurveEvaluator*)m_ppceCurveEvaluators[CURVE_TYPE_SUBDIVISION])->setAvgMask(value);
 	}
-
+	void tensionActiveCurves(double dTension);
+	void tensionCurve(int iCurve, double dTension);
+	double currCurveTension() const;
+	void currCurveTension(double dTension);
 protected:
 	int m_iEventToDo;
 	bool m_bHasEvent;

@@ -10,7 +10,8 @@ public:
 		std::vector<Point>& evaluatedPoints,
 		const float& animationLength,
 		const bool& bWrap,
-		const bool& bAdaptive) const ;
+		const bool& bAdaptive,
+		const double& dTension) const ;
 
 };
 

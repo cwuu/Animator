@@ -135,6 +135,29 @@ ModelerUIWindows::ModelerUIWindows() {
 			o->labelsize(12);
 			o->user_data((void*)(this));
 		  }
+		  {
+		  Fl_Value_Slider* o = m_psldrTension = new Fl_Value_Slider(230, 500, 100, 20, "Tension");
+		  o->type(5);
+		  o->labelsize(12);
+		  o->minimum(0.1);
+		  o->maximum(2.0);
+		  o->step(0.1);
+		  o->value(0.5);
+		  o->user_data((void*)(this));
+		  o->align(FL_ALIGN_LEFT);
+		}
+		{
+			Fl_Value_Slider* o = m_psldrFlatness = new Fl_Value_Slider(400, 500, 120, 20, "Flatness");
+			o->type(5);
+			o->labelsize(12);
+			o->minimum(0.00001);
+			o->maximum(0.01);
+			o->step(0.00001);
+			o->value(0.0001);
+			o->user_data((void*)(this)); 
+			o->align(FL_ALIGN_LEFT);
+		}
+
           o->end();
         }
         o->end();
@@ -194,6 +217,30 @@ ModelerUIWindows::ModelerUIWindows() {
 			  o->align(FL_ALIGN_LEFT);
 			  Fl_Group::current()->resizable(o);
 
+		  }
+		  {
+			  Fl_Value_Slider* o = m_psldrTension = new Fl_Value_Slider(350, 555, 100, 20, "Tension");
+			  o->type(5);
+			  o->labelsize(12);
+			  o->minimum(0.1);
+			  o->maximum(2.0);
+			  o->step(0.1);
+			  o->value(0.5);
+			  o->user_data((void*)(this));
+			  o->align(FL_ALIGN_LEFT);
+			  Fl_Group::current()->resizable(o);
+		  }
+		  {
+			  Fl_Value_Slider* o = m_psldrFlatness = new Fl_Value_Slider(230, 555, 100, 20, "Flatness");
+			  o->type(5);
+			  o->labelsize(12);
+			  o->minimum(0.00001);
+			  o->maximum(0.01);
+			  o->step(0.00001);
+			  o->value(0.0001);
+			  o->user_data((void*)(this));
+			  o->align(FL_ALIGN_LEFT);
+			  Fl_Group::current()->resizable(o);
 		  }
           { Fl_Box* o = new Fl_Box(165, 555, 135, 20, "Playback Controls");
             o->labelsize(12);

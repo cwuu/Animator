@@ -4,7 +4,8 @@
 void LinearCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, 
 										 std::vector<Point>& ptvEvaluatedCurvePts, 
 										 const float& fAniLength, 
-										 const bool& bWrap, const bool& bAdaptive) const
+										 const bool& bWrap, const bool& bAdaptive,
+										const double& dTension) const
 {
 	int iCtrlPtCount = ptvCtrlPts.size();
 
