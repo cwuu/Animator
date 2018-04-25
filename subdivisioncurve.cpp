@@ -24,7 +24,6 @@ void SubdivisionCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlP
 			break;
 
 		//chaikiin's algorithm: split -> average
-
 		vector<Point> split;
 		split.push_back(curve[0]);
 

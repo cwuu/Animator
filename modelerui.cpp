@@ -626,10 +626,10 @@ void ModelerUI::activeCurvesChanged()
 	}
 }
 
-void ModelerUI::cb_curveAvgMask(Fl_Slider* o, void* v) {
+void ModelerUI::cb_curveAvgMask(Fl_Value_Slider* o, void* v) {
 	((ModelerUI*)(o->user_data()))->cb_curveAvgMask_i(o, v);
 }
-void ModelerUI::cb_curveAvgMask_i(Fl_Slider* o, void* v) {
+void ModelerUI::cb_curveAvgMask_i(Fl_Value_Slider* o, void* v) {
 	m_pwndGraphWidget->setAvgMask(m_curveAveragingMask->value());
 }
 
