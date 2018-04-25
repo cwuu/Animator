@@ -82,7 +82,7 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, s
 
 		if (bAdaptive == false)
 		{
-			for (int i = 0; i < SAMPLE; i++)
+			for (int i = 0; i < SAMPLE; ++i)
 			{
 
 				const Mat4d M

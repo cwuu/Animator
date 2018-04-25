@@ -67,7 +67,7 @@ void SpawnParticles(Mat4d CameraMatrix, int num)
 				double ySpeed = 0;
 				double xSpeed = -(rand() % 10 / 10.0) + 0.5;
 				p.setVelocity(Vec3d(xSpeed, ySpeed, zSpeed));
-
+				ps->particles.push_back(p);
 			}
 		}
 	}
@@ -189,7 +189,7 @@ void SampleModel::default_draw()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse0);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPosition1);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse1);
-
+	//SpawnParticles(CameraMatrix, VAL(PARTICLE_NUM));
 	if (VAL(L_SYSTEM))
 	{
 		glPushMatrix();
@@ -267,7 +267,7 @@ void SampleModel::default_draw()
 				glPopMatrix();
 
 				//Particle System
-				SpawnParticles(CameraMatrix, VAL(PARTICLE_NUM));
+				//SpawnParticles(CameraMatrix, VAL(PARTICLE_NUM));
 
 				//draw nose
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
@@ -614,7 +614,10 @@ void SampleModel::default_draw()
 		else
 			drawBox(2, 2, 1);
 		//draw heart
-
+		glPushMatrix();
+		glTranslated(0, 2, 3);
+		SpawnParticles(CameraMatrix, VAL(PARTICLE_NUM));
+		glPopMatrix();
 		glPushMatrix();
 		if (heart_beat == true)
 			setDiffuseColor(COLOR_DARK_RED);
@@ -623,8 +626,10 @@ void SampleModel::default_draw()
 		glTranslated(1.2, 1.5, 1);
 		glRotated(90, 1.0, 0.0, 0.0);
 		drawTriangularPolygon(0.5, 0.5, 0.2, 60);
+		
 		glPopMatrix();
 
+		
 
 		//draw paint
 		setDiffuseColor(COLOR_GRAY);
