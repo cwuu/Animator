@@ -16,6 +16,7 @@
 #include "metaball.h"
 #include "mat.h"
 #include "vec.h"
+#include "bitmap.h"
 using namespace std;
 
 
@@ -31,7 +32,7 @@ public:
 	bool feet_dir = true; // false= negative, true = positive
 	bool heart_beat = false;
 	int beat_count = 0;
-	int it = 0;
+	//int it = 0;
 	void default_draw();
 };
 
@@ -104,10 +105,11 @@ ModelerView* createSampleModel(int x, int y, int w, int h, char *label)
 VOID SampleModel::draw() {
 	if (VAL(ACCUMULATION_BUFFER)) {
 		glClear(GL_ACCUM_BUFFER_BIT);
+		for(int it = 0; it < 4; it++ )
 		while (it < 4) {
 			it++;
 			default_draw();
-			glAccum(GL_RETURN, 1.0);
+			glAccum(GL_ACCUM, 1.0);
 			glDrawBuffer(GL_FRONT);
 			glAccum(GL_RETURN, 4.0 / (it + 1));
 			//glClear(GL_ACCUM_BUFFER_BIT);
@@ -151,12 +153,7 @@ void SampleModel::default_draw()
 	}
 	*/
 	
-	if (VAL(ACCUMULATION_BUFFER)) {
-		if(it == 0 )
-			glClear(GL_ACCUM_BUFFER_BIT);
-		//glAccum(GL_ACCUM, 0.25);
-		//glDrawBuffer(GL_FRONT);
-	}
+	
 	if (VAL(MOOD) == true)
 	{
 
@@ -505,9 +502,61 @@ void SampleModel::default_draw()
 		// height field 
 		if (VAL(HEIGHT_FIELD)) {
 			//TODO
-			int height_field_range = 10; //unit of field 
-			int height_field_height = HEIGHT;
-			//for(int y = 0; y< heightField; h ++)
+			//int height_field_range = 10; //unit of field 
+			int height_field_height, height_field_width;
+			glPushMatrix();
+			
+			
+			//save the intensity value in Vertices and the destination color in Colors
+			std::vector<Vec3f> Vertices;
+			std::vector<Vec3f> Colors;
+			unsigned char *heightField = readBMP("skybox/cliffBottom.bmp", height_field_height, height_field_width);
+			for (int j = 0; j < height_field_height; j++) {
+				for (int i = 0; i < height_field_width; i++) {
+					unsigned char* pixel = heightField + (i + j * height_field_width) * 3;
+					Vec3f color = Vec3f(0.0f, 0.0f, 0.0f);
+					if(pixel !=nullptr)
+						color = Vec3f(float((int)*pixel) / 255.0, float((int)*(pixel + 1)) / 255.0, float((int)*(pixel + 2)) / 255.0);
+					 
+					Colors.push_back(color);
+					double intensity = 0.299*(color[0]) + 0.587*color[1] + 0.114*color[2];
+					Vec3f newVertix = Vec3f(i, j, intensity*15.0);
+					
+					Vertices.push_back(newVertix);
+				}
+			}
+
+			//draw height field 
+			for (int j = 0; j < height_field_height-1; j++) {
+				for (int i = 0; i < height_field_width-1; i++) {
+					// the vertices index for triangle
+					int v00 = i + j * height_field_width; 
+					int v01 = i + j *height_field_width + 1;
+					int v10 = i + (j+1) * height_field_width;
+					int v11 = i + 1 + (j + 1)* height_field_width;
+					// draw triangle (0): v00.v01,v11
+					setDiffuseColor((Colors[v00][0]+Colors[v01][0]+Colors[v11][0])/3.0f,
+						(Colors[v00][1]+Colors[v01][1]+Colors[v11][1]) / 3.0f, 
+						(Colors[v00][1] + Colors[v01][1] + Colors[v11][1])/3.0f);
+					
+					drawTriangle(Vertices[v00][0]-10, Vertices[v00][2]-12, Vertices[v00][1] - 10,
+						Vertices[v01][0] - 10, Vertices[v01][2]-12, Vertices[v01][1] - 10,
+						Vertices[v11][0] -10, Vertices[v11][2] - 12, Vertices[v11][1] - 10
+						);
+					//draw triangle(1): v00, v11, v10
+					setDiffuseColor((Colors[v00][0] + Colors[v10][0] + Colors[v11][0]) / 3.0f,
+						(Colors[v00][1] + Colors[v10][1] + Colors[v11][1]) / 3.0f,
+						(Colors[v00][1] + Colors[v10][1] + Colors[v11][1]) / 3.0f);
+					
+					drawTriangle(Vertices[v00][0] - 10, Vertices[v00][2] - 12, Vertices[v00][1] - 10,
+						Vertices[v10][0] - 10, Vertices[v10][2] - 12, Vertices[v10][1] - 10,
+						Vertices[v11][0] - 10, Vertices[v11][2] - 12, Vertices[v11][1] - 10
+						);
+
+				}
+			}
+			glPopMatrix();
+
 		}
 		// skybox for the background
 		if(VAL(SKYBOX) == 1 ){

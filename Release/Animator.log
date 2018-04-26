@@ -1,3 +1,21 @@
-﻿  modeleruiwindows.cxx
-  Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
+﻿  robotarm.cpp
+robotarm.cpp(157): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(181): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(182): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(183): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(184): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+robotarm.cpp(702): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(757): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(766): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(797): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(809): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(848): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(875): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(887): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(902): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(938): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(944): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(1001): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(1007): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+  Animator.vcxproj -> C:\Users\ysunaw\Documents\animator\.\Release\modeler.exe
   Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)
