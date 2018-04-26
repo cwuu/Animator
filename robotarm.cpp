@@ -1094,6 +1094,7 @@ int main()
 	controls[PARTICLE_NUM] = ModelerControl("Number of particel", 0, 50, 1, 5);
 	controls[ACCUMULATION_BUFFER] = ModelerControl("accumulation buffer", 0, 1, 1, 0);
 
+
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
 	// to hook it up to the animator interface.
