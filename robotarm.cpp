@@ -17,6 +17,7 @@
 #include "mat.h"
 #include "vec.h"
 #include "bitmap.h"
+#include "subdivisionsurface.h"
 using namespace std;
 
 
@@ -34,9 +35,8 @@ public:
 	int beat_count = 0;
 	//int it = 0;
 	void default_draw();
+	Diamond* diamond;
 };
-
-
 
 
 
@@ -186,7 +186,59 @@ void SampleModel::default_draw()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse0);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPosition1);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse1);
-	//SpawnParticles(CameraMatrix, VAL(PARTICLE_NUM));
+	
+
+
+	Vec3f p[6];
+	p[0] = Vec3f(0, 2, 0);
+
+	p[1] = Vec3f(1, 1, 1);
+	p[2] = Vec3f(1, 1, -1);
+	p[3] = Vec3f(-1, 1, -1);
+	p[4] = Vec3f(-1, 1, 1);
+
+	p[5] = Vec3f(0, 0, 0);
+
+	cout << "adjust vertices or not ?(1 for yes/0 for no)" << endl;
+	bool adjust;
+	cin >> adjust;
+	if (adjust) 
+	{
+		for (int i = 0; i < 6; i++) 
+		{
+			float coords[3];
+			for (int j = 0; j < 3; j++) 
+				cin >> coords[j];
+			p[i] = Vec3f(coords[0], coords[1], coords[2]);
+		}
+	}
+	diamond = new Diamond(p);
+
+	cout << "adjust Avgmask?(1 for yes/0 for no)" << endl;
+	cin >> adjust;
+	if (!adjust) 
+	{
+		for (int i = 0; i < 4; i++) 
+		{
+			float k = 1.5;
+			if (i % 2 == 0)
+				k = 0.5;
+			Vertex::averageMask.push_back(1.0f * k);
+		}
+	}
+	else {
+		for (int i = 0; i < 4; i++) 
+		{
+			float a;
+			cin >> a;
+			Vertex::averageMask.push_back(a);
+		}
+
+	}
+
+	int num_split = 3;
+	diamond->split(num_split);
+	diamond->draw();
 	if (VAL(L_SYSTEM))
 	{
 		glPushMatrix();

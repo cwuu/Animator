@@ -1,66 +1,25 @@
-﻿  metaball.cpp
-metaball.cpp(18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-metaball.cpp(20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-metaball.cpp(22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-metaball.cpp(24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-metaball.cpp(52): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  modelerapp.cpp
-modelerapp.cpp(41): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-modelerapp.cpp(132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  modelerdraw.cpp
-modelerdraw.cpp(152): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
-  modelerui.cpp
-modelerui.cpp(57): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1096): note: see declaration of '_splitpath'
-modelerui.cpp(86): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1096): note: see declaration of '_splitpath'
-modelerui.cpp(109): warning C4996: '_splitpath': This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1096): note: see declaration of '_splitpath'
-modelerui.cpp(246): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-modelerui.cpp(398): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(399): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(425): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(437): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(450): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(460): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(470): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(561): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(638): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(681): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1952): note: see declaration of '_snprintf'
-modelerui.cpp(759): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1952): note: see declaration of '_snprintf'
-modelerui.cpp(784): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1952): note: see declaration of '_snprintf'
-modelerui.cpp(803): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-modelerui.cpp(846): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1952): note: see declaration of '_snprintf'
-  particleSystem.cpp
-particleSystem.cpp(33): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-particleSystem.cpp(46): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-particleSystem.cpp(124): warning C4018: '<': signed/unsigned mismatch
-particleSystem.cpp(143): warning C4018: '<': signed/unsigned mismatch
-  robotarm.cpp
+﻿  robotarm.cpp
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(63): warning C4018: '>': signed/unsigned mismatch
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(85): warning C4553: '==': operator has no effect; did you intend '='?
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(86): warning C4553: '==': operator has no effect; did you intend '='?
 robotarm.cpp(157): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
 robotarm.cpp(181): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
 robotarm.cpp(182): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
 robotarm.cpp(183): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
 robotarm.cpp(184): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(702): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(757): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(766): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(797): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(754): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
 robotarm.cpp(809): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(848): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(875): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(887): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(902): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(938): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(944): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1001): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1007): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-  Generating Code...
-  Animator.vcxproj -> C:\Users\ysunaw\Documents\animator\.\Release\modeler.exe
-  Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)
+robotarm.cpp(818): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(849): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(861): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(900): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(927): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(939): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(954): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(990): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(996): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(1053): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.cpp(1059): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+robotarm.obj : error LNK2001: unresolved external symbol "public: static class std::vector<float,class std::allocator<float> > Vertex::averageMask" (?averageMask@Vertex@@2V?$vector@MV?$allocator@M@std@@@std@@A)
+.\Release\modeler.exe : fatal error LNK1120: 1 unresolved externals

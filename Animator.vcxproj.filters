@@ -215,6 +215,9 @@
     <ClInclude Include="subdivisioncurve.h">
       <Filter>Header Files\Curves.</Filter>
     </ClInclude>
+    <ClInclude Include="subdivisionsurface.h">
+      <Filter>Header Files\Curves.</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cleanskel.pl">

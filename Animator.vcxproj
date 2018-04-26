@@ -299,6 +299,7 @@
     <ClInclude Include="rulerwindow.h" />
     <ClInclude Include="mat.h" />
     <ClInclude Include="subdivisioncurve.h" />
+    <ClInclude Include="subdivisionsurface.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="vec.h" />
   </ItemGroup>
