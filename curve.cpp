@@ -22,7 +22,7 @@ Curve::Curve() :
 	m_bWrap(false),
 	m_bDirty(true),
 	m_bAdaptive(false),
-	m_dTension(0.5),
+	m_dTension(1.0f),
 	m_fMaxX(1.0f)
 {
 	init();
@@ -33,7 +33,7 @@ Curve::Curve(const float fMaxX, const Point& point) :
 	m_bWrap(false),
 	m_bDirty(true),
 	m_bAdaptive(false), 
-	m_dTension(0.5),
+	m_dTension(1.0f),
 	m_fMaxX(fMaxX)
 {
 	addControlPoint(point);

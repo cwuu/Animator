@@ -1,27 +1,4 @@
-﻿  robotarm.cpp
-c:\users\ysunaw\documents\animator\subdivisionsurface.h(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\ysunaw\documents\animator\subdivisionsurface.h(63): warning C4018: '>': signed/unsigned mismatch
-c:\users\ysunaw\documents\animator\subdivisionsurface.h(85): warning C4553: '==': operator has no effect; did you intend '='?
-c:\users\ysunaw\documents\animator\subdivisionsurface.h(86): warning C4553: '==': operator has no effect; did you intend '='?
-robotarm.cpp(164): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(188): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(189): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(190): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(191): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(745): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(807): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(816): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(847): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(859): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(898): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(925): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(937): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(952): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(988): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(994): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1053): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1059): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-  LINK : .\Release\modeler.exe not found or not built by the last incremental link; performing full link
+﻿  LINK : .\Release\modeler.exe not found or not built by the last incremental link; performing full link
 fltk.lib(case.obj) : warning LNK4204: 'C:\Users\ysunaw\Documents\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
 fltk.lib(filename_absolute.obj) : warning LNK4204: 'C:\Users\ysunaw\Documents\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
 fltk.lib(filename_expand.obj) : warning LNK4204: 'C:\Users\ysunaw\Documents\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
