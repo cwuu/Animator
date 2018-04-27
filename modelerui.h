@@ -40,8 +40,10 @@ public:
 	bool simulate() const;
 	void simulate(bool bSimulate);
 	void redrawModelerView();
-    void autoLoadNPlay();
-
+	void autoLoadNPlay();
+	bool rb() const;
+	bool bounce() const;
+	bool flock() const;
 protected:
 
 	Fl_Box* labelBox(int nBox);
@@ -51,7 +53,7 @@ protected:
 	void activeCurvesChanged();
 	void indicatorRangeMarkerRange(float fMin, float fMax);
 	bool openAniScript(const char* szFileName);
-	
+
 private:
 
 	int m_iCurrControlCount;
@@ -150,4 +152,3 @@ private:
 };
 
 #endif
-

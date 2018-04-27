@@ -1,17 +1,17 @@
 /***********************
- * ParticleSystem class
- ***********************/
+* ParticleSystem class
+***********************/
 
 /**
- * The particle system class simply "manages" a collection of particles.
- * Its primary responsibility is to run the simulation, evolving particles
- * over time according to the applied forces using Euler's method.
- * This header file contains the functions that you are required to implement.
- * (i.e. the rest of the code relies on this interface)
- * In addition, there are a few suggested state variables included.
- * You should add to this class (and probably create new classes to model
- * particles and forces) to build your system.
- */
+* The particle system class simply "manages" a collection of particles.
+* Its primary responsibility is to run the simulation, evolving particles
+* over time according to the applied forces using Euler's method.
+* This header file contains the functions that you are required to implement.
+* (i.e. the rest of the code relies on this interface)
+* In addition, there are a few suggested state variables included.
+* You should add to this class (and probably create new classes to model
+* particles and forces) to build your system.
+*/
 
 #ifndef __PARTICLE_SYSTEM_H__
 #define __PARTICLE_SYSTEM_H__
@@ -25,7 +25,7 @@ using namespace std;
 
 class Particle {
 
-private:
+public:
 	double timeStep;
 	//bool hinata;
 	//float dampFactor;
@@ -33,10 +33,8 @@ private:
 	Vec3d position;
 	Vec3d velocity;
 	Vec3d netForce;
-	
 
 
-public:
 	Particle(Vec3d p, double m) : position(p), mass(m) {}
 
 	void setParticle(Vec3d p, Vec3d v, Vec3d n) { position = p; velocity = v; netForce = n; }
@@ -48,8 +46,9 @@ public:
 	Vec3d getNetForce() const { return netForce; }
 	double getMass() const { return mass; }
 
-	
+
 	void update(double timeStep);
+	void Particle::bounce(double timeStep, Particle& p);
 	void draw();
 
 
@@ -96,7 +95,7 @@ public:
 
 	// This function should clear out your data structure
 	// of baked particles (without leaking memory).
-	virtual void clearBaked();	
+	virtual void clearBaked();
 
 
 
@@ -110,7 +109,7 @@ public:
 
 
 public:
-	
+
 	float currentT;
 	vector<Particle> particles;
 	std::map<double, vector<Particle>> bakeContainer;
@@ -122,7 +121,7 @@ public:
 										// updating the grey indicator 
 	float bake_end_time;				// time at which baking ended
 
-	/** General state variables **/
+										/** General state variables **/
 	bool simulate;						// flag for simulation mode
 	bool dirty;							// flag for updating ui (don't worry about this)
 

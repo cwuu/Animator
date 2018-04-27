@@ -43,7 +43,7 @@ inline void ModelerUI::cb_openAniScript_i(Fl_Menu_*, void*)
 
 void ModelerUI::cb_openAniScript(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_openAniScript_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_openAniScript_i(o, v);
 }
 
 inline void ModelerUI::cb_saveAniScript_i(Fl_Menu_*, void*)
@@ -71,10 +71,10 @@ inline void ModelerUI::cb_saveAniScript_i(Fl_Menu_*, void*)
 
 void ModelerUI::cb_saveAniScript(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_saveAniScript_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_saveAniScript_i(o, v);
 }
 
-inline void ModelerUI::cb_saveBMPFile_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_saveBMPFile_i(Fl_Menu_*, void*)
 {
 	char *szFileName = NULL;
 	szFileName = fl_file_chooser("Save Frame As", "*.bmp", NULL);
@@ -92,9 +92,9 @@ inline void ModelerUI::cb_saveBMPFile_i(Fl_Menu_*, void*)
 	}
 }
 
-void ModelerUI::cb_saveBMPFile(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_saveBMPFile(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_saveBMPFile_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_saveBMPFile_i(o, v);
 }
 
 inline void ModelerUI::cb_saveMovie_i(Fl_Menu_*, void*)
@@ -120,21 +120,21 @@ inline void ModelerUI::cb_saveMovie_i(Fl_Menu_*, void*)
 
 void ModelerUI::cb_saveMovie(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_saveMovie_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_saveMovie_i(o, v);
 }
 
-inline void ModelerUI::cb_exit_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_exit_i(Fl_Menu_*, void*)
 {
 	m_pwndMainWnd->hide();
 	m_pwndModelerWnd->hide();
 }
 
-void ModelerUI::cb_exit(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_exit(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_exit_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_exit_i(o, v);
 }
 
-inline void ModelerUI::cb_hide_i(Fl_Window*, void*) 
+inline void ModelerUI::cb_hide_i(Fl_Window*, void*)
 {
 	m_pwndMainWnd->hide();
 	m_pwndModelerWnd->hide();
@@ -142,87 +142,87 @@ inline void ModelerUI::cb_hide_i(Fl_Window*, void*)
 
 void ModelerUI::cb_hide(Fl_Window* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_hide_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_hide_i(o, v);
 }
 
-inline void ModelerUI::cb_normal_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_normal_i(Fl_Menu_*, void*)
 {
 	setDrawMode(NORMAL);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_normal(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_normal(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_normal_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_normal_i(o, v);
 }
 
-inline void ModelerUI::cb_flat_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_flat_i(Fl_Menu_*, void*)
 {
 	setDrawMode(FLATSHADE);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_flat(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_flat(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_flat_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_flat_i(o, v);
 }
 
-inline void ModelerUI::cb_wireframe_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_wireframe_i(Fl_Menu_*, void*)
 {
 	setDrawMode(WIREFRAME);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_wireframe(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_wireframe(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_wireframe_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_wireframe_i(o, v);
 }
 
-inline void ModelerUI::cb_high_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_high_i(Fl_Menu_*, void*)
 {
 	setQuality(HIGH);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_high(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_high(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_high_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_high_i(o, v);
 }
 
-inline void ModelerUI::cb_medium_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_medium_i(Fl_Menu_*, void*)
 {
 	setQuality(MEDIUM);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_medium(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_medium(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_medium_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_medium_i(o, v);
 }
 
-inline void ModelerUI::cb_low_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_low_i(Fl_Menu_*, void*)
 {
 	setQuality(LOW);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_low(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_low(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_low_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_low_i(o, v);
 }
 
-inline void ModelerUI::cb_poor_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_poor_i(Fl_Menu_*, void*)
 {
 	setQuality(POOR);
 	m_pwndModelerView->redraw();
 }
 
-void ModelerUI::cb_poor(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_poor(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_poor_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_poor_i(o, v);
 }
 
-inline void ModelerUI::cb_aniLen_i(Fl_Menu_*, void*) 
+inline void ModelerUI::cb_aniLen_i(Fl_Menu_*, void*)
 {
 	int iAniLen;
 	const char* szAniLen = NULL;
@@ -236,19 +236,19 @@ inline void ModelerUI::cb_aniLen_i(Fl_Menu_*, void*)
 	} while (szAniLen && (iAniLen < 1 || iAniLen > 3600));
 }
 
-void ModelerUI::cb_aniLen(Fl_Menu_* o, void* v) 
+void ModelerUI::cb_aniLen(Fl_Menu_* o, void* v)
 {
-	((ModelerUI*)(o->parent()->user_data()))->cb_aniLen_i(o,v);
+	((ModelerUI*)(o->parent()->user_data()))->cb_aniLen_i(o, v);
 }
 
-inline void ModelerUI::cb_fps_i(Fl_Slider*, void*) 
+inline void ModelerUI::cb_fps_i(Fl_Slider*, void*)
 {
 	fps(m_psldrFPS->value());
 }
 
-void ModelerUI::cb_fps(Fl_Slider* o, void* v) 
+void ModelerUI::cb_fps(Fl_Slider* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_fps_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_fps_i(o, v);
 }
 
 void ModelerUI::cb_sliders(Fl_Widget* o, void* v)
@@ -262,7 +262,7 @@ void ModelerUI::cb_sliders(Fl_Widget* o, void* v)
 	}
 }
 
-inline void ModelerUI::cb_browser_i(Fl_Browser*, void*) 
+inline void ModelerUI::cb_browser_i(Fl_Browser*, void*)
 {
 	int iSelectedIndex = 0;
 	string strText;
@@ -301,22 +301,23 @@ inline void ModelerUI::cb_browser_i(Fl_Browser*, void*)
 	// the sliders will show up if we:
 	// 1. switch to tab immediately after the program starts
 	// 2. select a bunch of items in the browser window
-	m_pwndMainWnd->redraw(); 
+	m_pwndMainWnd->redraw();
 	m_pwndGraphWidget->redraw();
 }
 
-void ModelerUI::cb_browser(Fl_Browser* o, void* v) 
+void ModelerUI::cb_browser(Fl_Browser* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_browser_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_browser_i(o, v);
 }
 
-inline void ModelerUI::cb_tab_i(Fl_Tabs* o, void*) 
+inline void ModelerUI::cb_tab_i(Fl_Tabs* o, void*)
 {
 	if (m_ptabTab->value() != (Fl_Widget*)m_pgrpCurveGroup) {
 		// slider ctrl mode
 		m_pwndModelerView->camera(CTRL_MODE);
 		m_pwndModelerView->redraw();
-	} else {
+	}
+	else {
 		// curve mode
 		m_pwndModelerView->camera(CURVE_MODE);
 		m_pwndModelerView->redraw();
@@ -326,12 +327,12 @@ inline void ModelerUI::cb_tab_i(Fl_Tabs* o, void*)
 		m_pcbfValueChangedCallback();
 }
 
-void ModelerUI::cb_tab(Fl_Tabs* o, void* v) 
+void ModelerUI::cb_tab(Fl_Tabs* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_tab_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_tab_i(o, v);
 }
 
-inline void ModelerUI::cb_graphWidget_i(GraphWidget*, void*) 
+inline void ModelerUI::cb_graphWidget_i(GraphWidget*, void*)
 {
 	activeCurvesChanged();
 	redrawRulers();
@@ -339,35 +340,35 @@ inline void ModelerUI::cb_graphWidget_i(GraphWidget*, void*)
 		m_pcbfValueChangedCallback();
 }
 
-void ModelerUI::cb_graphWidget(GraphWidget* o, void* v) 
+void ModelerUI::cb_graphWidget(GraphWidget* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_graphWidget_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_graphWidget_i(o, v);
 }
 
-inline void ModelerUI::cb_zoomAll_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_zoomAll_i(Fl_Button*, void*)
 {
 	m_pwndGraphWidget->zoomAll();
 	m_pwndGraphWidget->redraw();
 	redrawRulers();
 }
 
-void ModelerUI::cb_zoomAll(Fl_Button* o, void* v) 
+void ModelerUI::cb_zoomAll(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_zoomAll_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_zoomAll_i(o, v);
 }
 
-inline void ModelerUI::cb_curveType_i(Fl_Choice*, void*) 
+inline void ModelerUI::cb_curveType_i(Fl_Choice*, void*)
 {
 	m_pwndGraphWidget->currCurveType(m_pchoCurveType->value());
 	m_pwndGraphWidget->redraw();
 }
 
-void ModelerUI::cb_curveType(Fl_Choice* o, void* v) 
+void ModelerUI::cb_curveType(Fl_Choice* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_curveType_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_curveType_i(o, v);
 }
 
-inline void ModelerUI::cb_wrap_i(Fl_Light_Button*, void*) 
+inline void ModelerUI::cb_wrap_i(Fl_Light_Button*, void*)
 {
 	if (m_pbtWrap->value() == 1) {
 		m_pwndGraphWidget->currCurveWrap(true);
@@ -378,22 +379,22 @@ inline void ModelerUI::cb_wrap_i(Fl_Light_Button*, void*)
 	m_pwndGraphWidget->redraw();
 }
 
-void ModelerUI::cb_wrap(Fl_Light_Button* o, void* v) 
+void ModelerUI::cb_wrap(Fl_Light_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_wrap_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_wrap_i(o, v);
 }
 
-inline void ModelerUI::cb_indicatorWnd_i(IndicatorWindow*, void*) 
+inline void ModelerUI::cb_indicatorWnd_i(IndicatorWindow*, void*)
 {
 	currTime(m_pwndIndicatorWnd->floatingIndicator());
 }
 
-void ModelerUI::cb_indicatorWnd(IndicatorWindow* o, void* v) 
+void ModelerUI::cb_indicatorWnd(IndicatorWindow* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_indicatorWnd_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_indicatorWnd_i(o, v);
 }
 
-inline void ModelerUI::cb_setCamKeyFrame_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_setCamKeyFrame_i(Fl_Button*, void*)
 {
 	float fTime = m_psldrTimeSlider->value();
 	float fMaxTime = m_psldrTimeSlider->maximum();
@@ -407,32 +408,32 @@ inline void ModelerUI::cb_setCamKeyFrame_i(Fl_Button*, void*)
 #ifdef _DEBUG
 			assert(m_pwndIndicatorWnd->floatingIndicatorSnapped());
 #endif _DEBUG
-		} 
+		}
 	}
 	m_pwndModelerView->m_curve_camera->m_bSnapped = true;
 	m_pbtRemoveCamKeyFrame->activate();
 	m_pwndIndicatorWnd->redraw();
-		
+
 }
 
-void ModelerUI::cb_setCamKeyFrame(Fl_Button* o, void* v) 
+void ModelerUI::cb_setCamKeyFrame(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_setCamKeyFrame_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_setCamKeyFrame_i(o, v);
 }
 
-inline void ModelerUI::cb_removeCamKeyFrame_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_removeCamKeyFrame_i(Fl_Button*, void*)
 {
 	float fTime = m_psldrTimeSlider->value();
 	m_pwndModelerView->m_curve_camera->removeKeyframe(fTime);
 	m_pwndIndicatorWnd->removeIndicator(m_pwndIndicatorWnd->floatingIndicator());
 	m_psldrTimeSlider->do_callback();
 }
-void ModelerUI::cb_removeCamKeyFrame(Fl_Button* o, void* v) 
+void ModelerUI::cb_removeCamKeyFrame(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_removeCamKeyFrame_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_removeCamKeyFrame_i(o, v);
 }
 
-inline void ModelerUI::cb_removeAllCamKeyFrames_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_removeAllCamKeyFrames_i(Fl_Button*, void*)
 {
 	float fTime = m_psldrTimeSlider->value();
 	m_pwndModelerView->m_curve_camera->removeKeyframe(fTime);
@@ -440,81 +441,81 @@ inline void ModelerUI::cb_removeAllCamKeyFrames_i(Fl_Button*, void*)
 	m_psldrTimeSlider->do_callback();
 }
 
-void ModelerUI::cb_removeAllCamKeyFrames(Fl_Button* o, void* v) 
+void ModelerUI::cb_removeAllCamKeyFrames(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_removeAllCamKeyFrames_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_removeAllCamKeyFrames_i(o, v);
 }
 
-inline void ModelerUI::cb_playStartSlider_i(Fl_Slider*, void*) 
+inline void ModelerUI::cb_playStartSlider_i(Fl_Slider*, void*)
 {
 	playStartTime(m_psldrPlayStart->value());
 }
 
-void ModelerUI::cb_playStartSlider(Fl_Slider* o, void* v) 
+void ModelerUI::cb_playStartSlider(Fl_Slider* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_playStartSlider_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_playStartSlider_i(o, v);
 }
 
-inline void ModelerUI::cb_playEndSlider_i(Fl_Slider*, void*) 
+inline void ModelerUI::cb_playEndSlider_i(Fl_Slider*, void*)
 {
 	playEndTime(m_psldrPlayEnd->value());
 }
 
-void ModelerUI::cb_playEndSlider(Fl_Slider* o, void* v) 
+void ModelerUI::cb_playEndSlider(Fl_Slider* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_playEndSlider_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_playEndSlider_i(o, v);
 }
 
-inline void ModelerUI::cb_timeSlider_i(Fl_Slider*, void*) 
+inline void ModelerUI::cb_timeSlider_i(Fl_Slider*, void*)
 {
 	currTime(m_psldrTimeSlider->value());
 }
 
-void ModelerUI::cb_timeSlider(Fl_Slider* o, void* v) 
+void ModelerUI::cb_timeSlider(Fl_Slider* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_timeSlider_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_timeSlider_i(o, v);
 }
 
-inline void ModelerUI::cb_play_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_play_i(Fl_Button*, void*)
 {
 	m_psldrFPS->deactivate();
 	animate(true);
 }
 
-void ModelerUI::cb_play(Fl_Button* o, void* v) 
+void ModelerUI::cb_play(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_play_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_play_i(o, v);
 }
 
-inline void ModelerUI::cb_pause_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_pause_i(Fl_Button*, void*)
 {
 	m_psldrFPS->activate();
 	animate(false);
 }
 
-void ModelerUI::cb_pause(Fl_Button* o, void* v) 
+void ModelerUI::cb_pause(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_pause_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_pause_i(o, v);
 }
 
-inline void ModelerUI::cb_stepBack_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_stepBack_i(Fl_Button*, void*)
 {
 	currTime(currTime() - 1.0f / (float)m_iFps);
 }
 
-void ModelerUI::cb_stepBack(Fl_Button* o, void* v) 
+void ModelerUI::cb_stepBack(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_stepBack_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_stepBack_i(o, v);
 }
 
-inline void ModelerUI::cb_stepForw_i(Fl_Button*, void*) 
+inline void ModelerUI::cb_stepForw_i(Fl_Button*, void*)
 {
 	currTime(currTime() + 1.0f / (float)m_iFps);
 }
 
-void ModelerUI::cb_stepForw(Fl_Button* o, void* v) 
+void ModelerUI::cb_stepForw(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_stepForw_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_stepForw_i(o, v);
 }
 
 inline void ModelerUI::cb_clearSim_i(Fl_Button* o, void* v)
@@ -529,32 +530,32 @@ inline void ModelerUI::cb_clearSim_i(Fl_Button* o, void* v)
 
 void ModelerUI::cb_clearSim(Fl_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_clearSim_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_clearSim_i(o, v);
 }
 
-inline void ModelerUI::cb_loop_i(Fl_Light_Button*, void*) 
+inline void ModelerUI::cb_loop_i(Fl_Light_Button*, void*)
 {
 }
 
-void ModelerUI::cb_loop(Fl_Light_Button* o, void* v) 
+void ModelerUI::cb_loop(Fl_Light_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_loop_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_loop_i(o, v);
 }
 
-inline void ModelerUI::cb_simulate_i(Fl_Light_Button* o, void*) 
+inline void ModelerUI::cb_simulate_i(Fl_Light_Button* o, void*)
 {
 }
 
-void ModelerUI::cb_simulate(Fl_Light_Button* o, void* v) 
+void ModelerUI::cb_simulate(Fl_Light_Button* o, void* v)
 {
-	((ModelerUI*)(o->user_data()))->cb_simulate_i(o,v);
+	((ModelerUI*)(o->user_data()))->cb_simulate_i(o, v);
 }
 
 void ModelerUI::cb_timed(void *p)
 {
 	ModelerUI* pui = (ModelerUI*)p;
 
-	if (!pui->m_bAnimating) 
+	if (!pui->m_bAnimating)
 		return;
 
 	// update UI
@@ -568,12 +569,12 @@ void ModelerUI::cb_timed(void *p)
 			pui->animate(false);
 			pui->currTime(pui->playStartTime());
 			return;
-		} 
+		}
 		// otherwise, reset to play start time
 		else {
 			pui->currTime(pui->playStartTime());
 		}
-	} 
+	}
 	else {
 		pui->currTime(t + dt);
 	}
@@ -581,22 +582,22 @@ void ModelerUI::cb_timed(void *p)
 	Fl::repeat_timeout(dt, cb_timed, (void *)pui);
 }
 
-Fl_Box* ModelerUI::labelBox(int nBox) 
+Fl_Box* ModelerUI::labelBox(int nBox)
 {
-  return (Fl_Box*)m_ppckPack->child(nBox * 2);
+	return (Fl_Box*)m_ppckPack->child(nBox * 2);
 }
 
-Fl_Value_Slider* ModelerUI::valueSlider(int iSlider) 
+Fl_Value_Slider* ModelerUI::valueSlider(int iSlider)
 {
-  return (Fl_Value_Slider*)m_ppckPack->child(iSlider * 2 + 1);
+	return (Fl_Value_Slider*)m_ppckPack->child(iSlider * 2 + 1);
 }
 
 const Fl_Value_Slider* ModelerUI::valueSlider(int iSlider) const
 {
-  return (Fl_Value_Slider*)m_ppckPack->child(iSlider * 2 + 1);
+	return (Fl_Value_Slider*)m_ppckPack->child(iSlider * 2 + 1);
 }
 
-void ModelerUI::redrawRulers() 
+void ModelerUI::redrawRulers()
 {
 	m_pwndHRuler->range(m_pwndGraphWidget->leftTime(), m_pwndGraphWidget->rightTime());
 	m_pwndHRuler->redraw();
@@ -661,7 +662,7 @@ void ModelerUI::cb_flatness(Fl_Slider* o, void* v)
 	((ModelerUI*)(o->user_data()))->cb_flatness_i(o, v);
 }
 
-void ModelerUI::currTime(float fTime) 
+void ModelerUI::currTime(float fTime)
 {
 	if (fTime < playStartTime())
 		fTime = playStartTime();
@@ -672,7 +673,7 @@ void ModelerUI::currTime(float fTime)
 	m_pwndIndicatorWnd->floatingIndicator(fTime);
 	m_psldrTimeSlider->value(fTime);
 	m_pwndModelerView->t = fTime;
-	
+
 	m_pwndGraphWidget->redraw();
 	m_pwndIndicatorWnd->redraw();
 	m_psldrTimeSlider->redraw();
@@ -682,7 +683,7 @@ void ModelerUI::currTime(float fTime)
 	szTime[63] = 0;
 	m_poutTime->value(szTime);
 	m_poutTime->redraw();
-	
+
 	if (m_pwndIndicatorWnd->floatingIndicatorSnapped()) {
 		m_pbtRemoveCamKeyFrame->activate();
 		m_pwndModelerView->m_curve_camera->m_bSnapped = true;
@@ -717,11 +718,11 @@ float ModelerUI::currTime() const
 	return m_pwndGraphWidget->currTime();
 }
 
-void ModelerUI::endTime(float fEndTime) 
+void ModelerUI::endTime(float fEndTime)
 {
 	m_pwndGraphWidget->endTime(fEndTime);
 	m_pwndGraphWidget->redraw();
-	
+
 	m_psldrPlayStart->range(0.0, fEndTime);
 	playStartTime(0.0f);
 	m_psldrPlayStart->redraw();
@@ -729,7 +730,7 @@ void ModelerUI::endTime(float fEndTime)
 	m_psldrPlayEnd->range(0.0, fEndTime);
 	playEndTime(fEndTime);
 	m_psldrPlayEnd->redraw();
-	
+
 	m_psldrTimeSlider->range(0.0, fEndTime);
 	m_psldrTimeSlider->redraw();
 
@@ -808,14 +809,14 @@ float ModelerUI::controlValue(int iControl) const
 	}
 }
 
-void ModelerUI::controlValue(int iControl, float fVal) 
+void ModelerUI::controlValue(int iControl, float fVal)
 {
 	valueSlider(iControl)->value(fVal);
 	if (m_pcbfValueChangedCallback)
 		m_pcbfValueChangedCallback();
 }
 
-void ModelerUI::setValueChangedCallback(ValueChangedCallback* pcbf) 
+void ModelerUI::setValueChangedCallback(ValueChangedCallback* pcbf)
 {
 	m_pcbfValueChangedCallback = pcbf;
 }
@@ -895,6 +896,28 @@ void ModelerUI::animate(bool bAnimate)
 	m_bAnimating = bAnimate;
 }
 
+bool ModelerUI::rb() const
+{
+	if (m_pbtRigidBody->value())
+		return true;
+	return false;
+}
+bool ModelerUI::bounce() const
+{
+	if (m_pbtbounce->value())
+		return true;
+	return false;
+}
+
+bool ModelerUI::flock() const
+{
+	if (m_pbtFlock->value())
+		return true;
+	return false;
+}
+
+
+
 int ModelerUI::fps()
 {
 	return m_iFps;
@@ -905,12 +928,12 @@ void ModelerUI::fps(const int iFps)
 	m_iFps = iFps;
 }
 
-ModelerUI::ModelerUI() : 
-m_iCurrControlCount(0), 
-m_pcbfValueChangedCallback(NULL),
-m_iFps(30),
-m_bAnimating(false),
-m_bSaveMovie(false)
+ModelerUI::ModelerUI() :
+	m_iCurrControlCount(0),
+	m_pcbfValueChangedCallback(NULL),
+	m_iFps(30),
+	m_bAnimating(false),
+	m_bSaveMovie(false)
 {
 
 	m_psldrFlatness->callback((Fl_Callback*)cb_flatness);
@@ -964,12 +987,12 @@ m_bSaveMovie(false)
 	endTime(20.0f);
 }
 
-void ModelerUI::show() 
+void ModelerUI::show()
 {
-	m_pwndMainWnd->resize(30, 30, 
+	m_pwndMainWnd->resize(30, 30,
 		m_pwndMainWnd->w(), m_pwndMainWnd->h());
 	m_pwndMainWnd->show();
-	
+
 	m_pwndModelerWnd->resize(40 + m_pwndMainWnd->w(), 30,
 		m_pwndModelerWnd->w(), m_pwndModelerWnd->h());
 	m_pwndModelerWnd->show();
@@ -977,11 +1000,11 @@ void ModelerUI::show()
 	m_pwndGraphWidget->do_callback();
 }
 
-void ModelerUI::addControl(const char* szName, float fMin, float fMax, float fStepSize, float fInitVal) 
+void ModelerUI::addControl(const char* szName, float fMin, float fMax, float fStepSize, float fInitVal)
 {
 	Fl_Group* pgrpCurrBak = Fl_Group::current();
 	Fl_Group::current(m_ppckPack);
-	
+
 	const int k_iTextHeight = 20;
 	const int k_iSliderHeight = 20;
 
@@ -990,8 +1013,8 @@ void ModelerUI::addControl(const char* szName, float fMin, float fMax, float fSt
 	box->labelsize(10);
 	box->hide();
 	box->box(FL_FLAT_BOX); // otherwise, Fl_Scroll messes up (ehsu)
-		
-	// Setup the slider
+
+						   // Setup the slider
 	Fl_Value_Slider *slider = new Fl_Value_Slider(0, 0, m_ppckPack->w(), k_iSliderHeight, 0);
 	slider->type(1);
 	slider->hide();
@@ -1007,7 +1030,7 @@ void ModelerUI::addControl(const char* szName, float fMin, float fMax, float fSt
 	string strName = "@C0"; // FLTK color encoding, we'll use @C0~@C6
 	strName += szName;
 	m_pbrsBrowser->add(strName.c_str());
-	
+
 	// Setup the curve
 	m_pwndGraphWidget->addCurve(fInitVal, fMin, fMax);
 

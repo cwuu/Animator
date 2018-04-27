@@ -25,24 +25,25 @@ ModelerControl::ModelerControl(const char* name, float minimum, float maximum, f
 }
 
 ModelerControl::ModelerControl(const ModelerControl &o)
-{ 
-	operator=(o); 
+{
+	operator=(o);
 }
 
 ModelerControl&	ModelerControl::operator=(const ModelerControl &o)
-{ 
-	if (this != &o) 
-		SetVals(o.m_name, o.m_minimum, o.m_maximum, o.m_stepsize, o.m_value); 
+{
+	if (this != &o)
+		SetVals(o.m_name, o.m_minimum, o.m_maximum, o.m_stepsize, o.m_value);
 	return *this;
 }
 
 void ModelerControl::SetVals(const char* name, float minimum, float maximum, float stepsize, float value)
 {
-	strncpy(m_name,name, 128);
-	m_minimum  = minimum;
-	m_maximum  = maximum;
+
+	strncpy(m_name, name, 128);
+	m_minimum = minimum;
+	m_maximum = maximum;
 	m_stepsize = stepsize;
-	m_value    = value;
+	m_value = value;
 }
 
 
@@ -61,46 +62,46 @@ ModelerApplication* ModelerApplication::Instance()
 	return (m_instance) ? (m_instance) : (m_instance = new ModelerApplication());
 }
 
-void ModelerApplication::Init(ModelerViewCreator_f createView, 
-                              const ModelerControl controls[], unsigned numControls)
+void ModelerApplication::Init(ModelerViewCreator_f createView,
+	const ModelerControl controls[], unsigned numControls)
 {
-    int i;
+	int i;
 
-	m_animating   = false;
+	m_animating = false;
 	m_numControls = numControls;
 
 	DWORD dwBtnFaceColor = GetSysColor(COLOR_BTNFACE);
 
 	// Get consistent background color
-	Fl::background(GetRValue(dwBtnFaceColor), 
+	Fl::background(GetRValue(dwBtnFaceColor),
 		GetGValue(dwBtnFaceColor),
 		GetBValue(dwBtnFaceColor));
 
-    // ********************************************************
-    // Create the FLTK user interface
-    // ********************************************************
-    
-    m_ui = new ModelerUI();
-    
-    // For each control, add appropriate objects to the user interface
-    for (i=0; i<m_numControls; i++)
-    {
-		m_ui->addControl(controls[i].m_name, 
+	// ********************************************************
+	// Create the FLTK user interface
+	// ********************************************************
+
+	m_ui = new ModelerUI();
+
+	// For each control, add appropriate objects to the user interface
+	for (i = 0; i<m_numControls; i++)
+	{
+		m_ui->addControl(controls[i].m_name,
 			controls[i].m_minimum, controls[i].m_maximum,
 			controls[i].m_stepsize, controls[i].m_value);
-    }
+	}
 
 	// Setup value-changed callback
 	m_ui->setValueChangedCallback(ModelerApplication::ValueChangedCallback);
 
-	ModelerView* modelerView = createView(0, 0, 100, 100 ,NULL);
+	ModelerView* modelerView = createView(0, 0, 100, 100, NULL);
 	m_ui->replaceModelerView(modelerView);
 }
 
 ModelerApplication::~ModelerApplication()
 {
-    // FLTK handles widget deletion
-    delete m_ui;
+	// FLTK handles widget deletion
+	delete m_ui;
 }
 
 int ModelerApplication::Run()
@@ -111,8 +112,8 @@ int ModelerApplication::Run()
 		return -1;
 	}
 
-    // Just tell FLTK to go for it.
-   	Fl::visual( FL_RGB | FL_DOUBLE );
+	// Just tell FLTK to go for it.
+	Fl::visual(FL_RGB | FL_DOUBLE);
 	m_ui->show();
 	Fl::add_timeout(0, ModelerApplication::RedrawLoop, NULL);
 
@@ -124,12 +125,12 @@ int ModelerApplication::Run()
 
 double ModelerApplication::GetControlValue(int controlNumber)
 {
-    return m_ui->controlValue(controlNumber);
+	return m_ui->controlValue(controlNumber);
 }
 
 void ModelerApplication::SetControlValue(int controlNumber, double value)
 {
-    m_ui->controlValue(controlNumber, value);
+	m_ui->controlValue(controlNumber, value);
 }
 
 ParticleSystem *ModelerApplication::GetParticleSystem()
@@ -156,7 +157,19 @@ bool ModelerApplication::Animating()
 {
 	return m_animating;
 }
+bool ModelerApplication::rb()
+{
+	return m_ui->rb();
+}
+bool ModelerApplication::bounce()
+{
+	return m_ui->bounce();
+}
 
+bool ModelerApplication::flock()
+{
+	return m_ui->flock();
+}
 void ModelerApplication::ValueChangedCallback()
 {
 
@@ -168,15 +181,15 @@ void ModelerApplication::ValueChangedCallback()
 	float playEndTime = m_ui->playEndTime();
 
 	ParticleSystem *ps = m_app->GetParticleSystem();
-	
+
 	if (ps != NULL) {
 		bool simulating = ps->isSimulate();
 
 		// stop simulation if we're at endTime
 		double TIME_EPSILON = 0.05;
 		if (simulating && (currTime >= (playEndTime - TIME_EPSILON))) {
-			ps->stopSimulation(currTime); 
-		} 
+			ps->stopSimulation(currTime);
+		}
 
 		// check to see if we're simulating still
 		simulating = ps->isSimulate();
@@ -190,7 +203,8 @@ void ModelerApplication::ValueChangedCallback()
 			// to the ui
 			else if (m_ui->simulate()) {
 				ps->startSimulation(currTime);
-			} else {
+			}
+			else {
 				ps->stopSimulation(currTime);
 			}
 		}

@@ -40,17 +40,17 @@ public:
 	// Fetch the global ModelerApplication instance
 	static ModelerApplication* Instance();
 
-    // Initialize the application; see sample models for usage
-	void Init(ModelerViewCreator_f createView, 
-              const ModelerControl controls[], 
-              unsigned numControls); 
+	// Initialize the application; see sample models for usage
+	void Init(ModelerViewCreator_f createView,
+		const ModelerControl controls[],
+		unsigned numControls);
 
-    // Starts the application, returns when application is closed
+	// Starts the application, returns when application is closed
 	int  Run();
 
-    // Get and set slider values.
-    double GetControlValue(int controlNumber);
-    void   SetControlValue(int controlNumber, double value);
+	// Get and set slider values.
+	double GetControlValue(int controlNumber);
+	void   SetControlValue(int controlNumber, double value);
 
 	// Get and set particle system
 	ParticleSystem *GetParticleSystem();
@@ -65,19 +65,27 @@ public:
 	// Returns animating flag
 	bool Animating();
 
+	//rigid body
+	bool rb();
+
+	//flock behavior
+	bool flock();
+
+	bool bounce();
+
 private:
 	// Private for singleton
 	ModelerApplication() : m_numControls(-1) { ps = 0; }
 	ModelerApplication(const ModelerApplication&) {}
 	ModelerApplication& operator=(const ModelerApplication&) {}
-	
+
 	// The instance
 	static ModelerApplication *m_instance;
 
 	ModelerUI *m_ui;
 	int					  m_numControls;
 
-    static void ValueChangedCallback();
+	static void ValueChangedCallback();
 	static void RedrawLoop(void*);
 
 	// Just a flag for updates
