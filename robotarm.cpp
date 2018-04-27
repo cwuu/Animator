@@ -18,6 +18,7 @@
 #include "vec.h"
 #include "bitmap.h"
 #include "subdivisionsurface.h"
+#include "IK\ik.h"
 using namespace std;
 
 
@@ -33,9 +34,13 @@ public:
 	bool feet_dir = true; // false= negative, true = positive
 	bool heart_beat = false;
 	int beat_count = 0;
+	
 	//int it = 0;
 	void default_draw();
+
 	Diamond* diamond;
+private: 
+	InverseKinematics* rightLeg;
 };
 
 
@@ -345,7 +350,7 @@ void SampleModel::default_draw()
 			glPushMatrix();
 			//draw shoulder
 			glRotated(VAL(RIGHT_ARM), 1.0, 0.0, 0.0);
-			glRotated(-90, 1.0, 0.0, 0.0);
+			glRotated(-90, 1.0, 0.0, 0.0); 
 
 			glPushMatrix();
 			glTranslated(0.0, 0.0, 0.2);
@@ -364,33 +369,33 @@ void SampleModel::default_draw()
 
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
+					
+						//draw arm
+						setDiffuseColor(COLOR_DARK_RED);
+						glTranslated(0, 0, -0.7);
 
-					//draw arm
-					setDiffuseColor(COLOR_DARK_RED);
-					glTranslated(0, 0, -0.7);
+						glPushMatrix();
 
-					glPushMatrix();
+						glScaled(0.2, 0.3, 0.5);
 
-					glScaled(0.2, 0.3, 0.5);
+						glutSolidDodecahedron();
+						glPopMatrix();
 
-					glutSolidDodecahedron();
-					glPopMatrix();
-
-
-					if (VAL(HAND_WEAPON) == 1)
-					{
-						setDiffuseColor(COLOR_YELLOW);
-						glRotated(-90, 1.0, 0.0, 0.0);
-						drawTorus(0.3, 0.1);
-						glTranslated(0, 0.25, 0.0);
-						drawTorus(0.3, 0.1);
-						glTranslated(0, 0.25, 0.0);
-						drawTorus(0.3, 0.1);
-						glTranslated(0, 0.5, 0.0);
-						glRotated(90, 1.0, 0.0, 0.0);
-						drawCylinder(0.4, 0, 0.3);
-					}
-
+						
+						if (VAL(HAND_WEAPON) == 1)
+						{
+							setDiffuseColor(COLOR_YELLOW);
+							glRotated(-90, 1.0, 0.0, 0.0);
+							drawTorus(0.3, 0.1);
+							glTranslated(0, 0.25, 0.0);
+							drawTorus(0.3, 0.1);
+							glTranslated(0, 0.25, 0.0);
+							drawTorus(0.3, 0.1);
+							glTranslated(0, 0.5, 0.0);
+							glRotated(90, 1.0, 0.0, 0.0);
+							drawCylinder(0.4, 0, 0.3);
+						}
+					
 				}
 			}
 			glPopMatrix();
@@ -441,8 +446,17 @@ void SampleModel::default_draw()
 		}
 
 		//draw right leg (joint->upper leg->joint->lower leg->foot)
+		//implement ik here 
 		if (VAL(LEVEL_OF_DETAILS) >= 2)
 		{
+			if (VAL(ENABLE_IK)) {
+				// if the ik is enabled, calculate the rotation angle accordingly 
+				Vec3f destination = (VAL(IK_LEG_X), VAL(IK_LEG_Y), VAL(IK_LEG_Z));
+				setDiffuseColor(COLOR_DARK_RED);
+				glPushMatrix();
+				glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
+
+			}
 			setDiffuseColor(COLOR_DARK_RED);
 			glPushMatrix();
 			glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
@@ -1029,8 +1043,10 @@ void SampleModel::default_draw()
 		}
 
 		//draw left leg (joint->upper leg->joint->lower leg->foot)
+	
 		if (VAL(LEVEL_OF_DETAILS) >= 2)
 		{
+			
 			setDiffuseColor(COLOR_DARK_RED);
 			glPushMatrix();
 			glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
@@ -1136,7 +1152,7 @@ int main()
 	controls[FRAME_ALL] = ModelerControl("Frame All", 0, 1, 1, 0);
 	controls[INDIVIDUAL_LOOK] = ModelerControl("Individual Look", 0, 1, 1, 0);
 	controls[MOOD] = ModelerControl("Lying Mode", 0, 1, 1, 0);
-	controls[INVERSE_KINEMATICS] = ModelerControl("Inverse Kinematics?", 0, 1, 1, 0);
+	//controls[INVERSE_KINEMATICS] = ModelerControl("Inverse Kinematics?", 0, 1, 1, 0);
 	controls[CONSTRAINT_X] = ModelerControl("Constraint 1 X", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Y] = ModelerControl("Constraint 1 Y", -5, 5, 0.1, 0);
 	controls[CONSTRAINT_Z] = ModelerControl("Constraint 1 Z", -5, 5, 0.1, 0);
@@ -1145,7 +1161,10 @@ int main()
 	controls[HEIGHT_FIELD] = ModelerControl("Height Field", 0, 1, 1, 0);
 	controls[PARTICLE_NUM] = ModelerControl("Number of particel", 0, 50, 1, 5);
 	controls[ACCUMULATION_BUFFER] = ModelerControl("accumulation buffer", 0, 1, 1, 0);
-
+	controls[ENABLE_IK] = ModelerControl("Inverse Kinematics", 0, 1, 1, 0);
+	controls[IK_LEG_X] = ModelerControl("IK arm X-axis", -1, 1, 0.1f, 0);
+	controls[IK_LEG_Y] = ModelerControl("IK arm Y-axis", -1, 1, 0.1f, 0);
+	controls[IK_LEG_Z] = ModelerControl("IK arm Z-axis", -1, 1, 0.1f, 0);
 
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)

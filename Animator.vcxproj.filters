@@ -123,6 +123,9 @@
     <ClCompile Include="subdivisioncurve.cpp">
       <Filter>Source Files\Curves</Filter>
     </ClCompile>
+    <ClCompile Include="IK\ik.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="curve.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="subdivisionsurface.h">
       <Filter>Header Files\Curves.</Filter>
+    </ClInclude>
+    <ClInclude Include="IK\ik.h">
+      <Filter>Header Files\Model.</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
