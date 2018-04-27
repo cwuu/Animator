@@ -38,19 +38,20 @@ void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, st
 
 
 			const Mat4d M
-			(-1*dTension/ 2.0, 3 * dTension/ 2.0, -3 * dTension/ 2.0, 1 * dTension / 2.0,
+			(-1 * dTension / 2.0, 3 * dTension / 2.0, -3 * dTension / 2.0, 1 * dTension / 2.0,
 				2 * dTension / 2.0, -5 * dTension / 2.0, 4 * dTension / 2.0, -1 * dTension / 2.0,
 				-1 * dTension / 2.0, 0, 1 * dTension / 2.0, 0,
 				0, 2 * dTension / 2.0, 0, 0);
-			
+
 			const double interval = i / (double)SAMPLE;
 			Vec4d T(interval* interval* interval, interval* interval, interval, 1);
 			Point bezier_point(T*M*px, T*M*py); //weighted bezier curve
-			//deal with the ending point
-			if (bezier_point.x <= ptvEvaluatedCurvePts.back().x  && ptvEvaluatedCurvePts.empty() == false)
-				continue;
+												//deal with the ending point
+			if (ptvEvaluatedCurvePts.empty() || bezier_point.x > ptvEvaluatedCurvePts.back().x)
+				ptvEvaluatedCurvePts.push_back(bezier_point);
+		
 			ptvEvaluatedCurvePts.push_back(bezier_point);
-			
+
 		}
 
 
@@ -63,3 +64,5 @@ void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, st
 	}
 
 }
+
+
