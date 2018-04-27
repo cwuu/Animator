@@ -1,25 +1,102 @@
-﻿  robotarm.cpp
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(419): warning C4018: '<': signed/unsigned mismatch
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(446): warning C4018: '>': signed/unsigned mismatch
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(470): warning C4553: '==': operator has no effect; did you intend '='?
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(471): warning C4553: '==': operator has no effect; did you intend '='?
-robotarm.cpp(160): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(184): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(185): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(186): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(187): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(763): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(818): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(827): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(858): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(870): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(909): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(936): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(948): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(963): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(999): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1005): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1062): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1068): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+﻿fltk.lib(case.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(filename_absolute.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(filename_expand.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(filename_isdir.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(filename_list.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(filename_match.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_abort.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_arc.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_arci.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_ask.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Bitmap.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Box.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_boxtype.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Browser.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Browser_.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Button.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Check_Button.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Choice.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_color.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_compose.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_cursor.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_curve.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Device.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_dnd.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Double_Window.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_draw.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_draw_image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_draw_pixmap.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_File_Browser.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_File_Chooser.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_File_Chooser2.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_file_dir.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_File_Icon.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_File_Input.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_font.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_get_system_colors.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_grab.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Group.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_gtk.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_gleam.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Input.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Input_.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_labeltype.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Light_Button.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_line_style.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_lock.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Menu.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Menu_.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Menu_add.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Menu_Bar.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Menu_Button.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Menu_Window.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Overlay_Window.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Pack.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Pixmap.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_plastic.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Preferences.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_read_image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_rect.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Repeat_Button.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Return_Button.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_round_box.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Scroll.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_scroll_area.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Scrollbar.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Shared_Image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_shortcut.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Single_Window.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Slider.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_symbols.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Tabs.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Tile.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Tiled_Image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Tooltip.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_utf.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_utf8.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Valuator.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Value_Slider.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(fl_vertex.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_visual.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Widget.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Window.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Window_fullscreen.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Window_hotspot.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_Window_shape.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_XBM_Image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(Fl_XPM_Image.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(flstring.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(is_spacing.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(numericsort.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(scandir.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(screen_xywh.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltk.lib(vsnprintf.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltkgl.lib(Fl_Gl_Choice.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltkgl.lib(Fl_Gl_Device_Plugin.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltkgl.lib(Fl_Gl_Window.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltkgl.lib(freeglut_geometry.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
+fltkgl.lib(gl_draw.obj) : warning LNK4204: 'C:\Users\cwuu\Desktop\animator\Release\vc140.pdb' is missing debugging information for referencing module; linking object as if no debug info
   Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
   Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)

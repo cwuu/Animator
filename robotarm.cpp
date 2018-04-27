@@ -202,19 +202,7 @@ void SampleModel::default_draw()
 
 	p[5] = Vec3f(0, 0, 0);
 
-	/*cout << "adjust vertices or not ?(1 for yes/0 for no)" << endl;
-	bool adjust;
-	cin >> adjust;
-	if (adjust) 
-	{
-		for (int i = 0; i < 6; i++) 
-		{
-			float coords[3];
-			for (int j = 0; j < 3; j++) 
-				cin >> coords[j];
-			p[i] = Vec3f(coords[0], coords[1], coords[2]);
-		}
-	}*/
+
 	diamond = new Diamond(p);
 	for (int i = 0; i < 4; i++)
 	{
@@ -223,31 +211,12 @@ void SampleModel::default_draw()
 			k = 0.5;
 		Vertex::averageMask.push_back(1.0f * k);
 	}
-	/*cout << "adjust Avgmask?(1 for yes/0 for no)" << endl;
-	cin >> adjust;
-	if (!adjust) 
-	{
-		for (int i = 0; i < 4; i++) 
-		{
-			float k = 1.5;
-			if (i % 2 == 0)
-				k = 0.5;
-			Vertex::averageMask.push_back(1.0f * k);
-		}
-	}
-	else {
-		for (int i = 0; i < 4; i++) 
-		{
-			float a;
-			cin >> a;
-			Vertex::averageMask.push_back(a);
-		}
 
-	}*/
-
-	int num_split = 3;
+	int num_split=3;
+	//cin >> num_split;
+	
 	diamond->split(num_split);
-	diamond->draw();
+	
 	if (VAL(L_SYSTEM))
 	{
 		glPushMatrix();
@@ -787,7 +756,14 @@ void SampleModel::default_draw()
 				else
 					drawCylinder(0.7, 0.6, 0.5);//head
 
-												//draw nose
+				//draw crown
+				glPushMatrix();
+				glRotated(-90, 1.0, 0.0, 0.0);
+				glTranslated(0.0, -1.9, 0.0);
+				setDiffuseColor(COLOR_GRAY);
+				diamond->draw();
+				glPopMatrix();
+				//draw nose
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					setDiffuseColor(COLOR_GRAY);

@@ -1,4 +1,26 @@
-﻿  modeleruiwindows.cxx
+﻿  robotarm.cpp
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(63): warning C4018: '>': signed/unsigned mismatch
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(85): warning C4553: '==': operator has no effect; did you intend '='?
+c:\users\cwuu\desktop\animator\subdivisionsurface.h(86): warning C4553: '==': operator has no effect; did you intend '='?
+c:\users\cwuu\desktop\animator\robotarm.cpp(160): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(184): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\cwuu\desktop\animator\robotarm.cpp(185): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\cwuu\desktop\animator\robotarm.cpp(186): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\cwuu\desktop\animator\robotarm.cpp(187): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\cwuu\desktop\animator\robotarm.cpp(764): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(826): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(835): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(866): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(878): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(917): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(944): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(956): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(971): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(1007): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(1013): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(1070): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+c:\users\cwuu\desktop\animator\robotarm.cpp(1076): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
   Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Debug\modeler.exe
   Animator.vcxproj -> .\Debug/Animator.pdb (Full PDB)
 BSCMAKE : error BK1506: cannot open file '.\Debug/Animator.bsc'
