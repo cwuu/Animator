@@ -38,6 +38,7 @@ ModelerControl&	ModelerControl::operator=(const ModelerControl &o)
 
 void ModelerControl::SetVals(const char* name, float minimum, float maximum, float stepsize, float value)
 {
+
 	strncpy(m_name,name, 128);
 	m_minimum  = minimum;
 	m_maximum  = maximum;
