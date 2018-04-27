@@ -65,6 +65,13 @@ public:
 	// Returns animating flag
 	bool Animating();
 
+	//rigid body
+	bool rb();
+
+	//flock behavior
+	bool flock();
+
+
 private:
 	// Private for singleton
 	ModelerApplication() : m_numControls(-1) { ps = 0; }

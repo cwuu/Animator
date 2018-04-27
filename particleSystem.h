@@ -25,7 +25,7 @@ using namespace std;
 
 class Particle {
 
-private:
+public:
 	double timeStep;
 	//bool hinata;
 	//float dampFactor;
@@ -35,8 +35,6 @@ private:
 	Vec3d netForce;
 	
 
-
-public:
 	Particle(Vec3d p, double m) : position(p), mass(m) {}
 
 	void setParticle(Vec3d p, Vec3d v, Vec3d n) { position = p; velocity = v; netForce = n; }
@@ -50,6 +48,7 @@ public:
 
 	
 	void update(double timeStep);
+	void Particle::bounce(double timeStep, Particle& p);
 	void draw();
 
 

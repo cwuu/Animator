@@ -895,6 +895,22 @@ void ModelerUI::animate(bool bAnimate)
 	m_bAnimating = bAnimate;
 }
 
+bool ModelerUI::rb() const
+{
+	if (m_pbtRigidBody->value())
+		return true;
+	return false;
+}
+
+bool ModelerUI::flock() const
+{
+	if (m_pbtFlock->value())
+		return true;
+	return false;
+}
+
+
+
 int ModelerUI::fps()
 {
 	return m_iFps;

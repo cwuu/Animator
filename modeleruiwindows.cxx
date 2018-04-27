@@ -197,6 +197,13 @@ ModelerUIWindows::ModelerUIWindows() {
 			  Fl_Group::current()->resizable(o);
 
 		  }
+		  { Fl_Light_Button* o = m_pbtRigidBody = new Fl_Light_Button(370, 580, 80, 20, "Rigid Body");
+		  o->labelsize(12);
+		  o->user_data((void*)(this));
+		  }
+		  { Fl_Light_Button* o = m_pbtFlock = new Fl_Light_Button(405, 555, 65, 20, "Flock");
+		  o->user_data((void*)(this));
+		  }
 		  {
 			  Fl_Value_Slider* o = m_psldrTension = new Fl_Value_Slider(350, 555, 100, 20, "Tension");
 			  o->type(5);

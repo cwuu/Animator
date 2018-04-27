@@ -53,7 +53,7 @@ void SpawnParticles(Mat4d CameraMatrix, int num)
 	Mat4d WorldMatrix = CameraMatrix.inverse() * getModelViewMatrix();
 	Vec4d position = WorldMatrix *  Vec4d(0.5, 1, -2, 1);
 	ParticleSystem *ps = ModelerApplication::Instance()->GetParticleSystem();
-	//ps->SpawnParticles(Vec3d(position[0], position[1], position[2]), num);
+	
 	Vec3d pos = Vec3d(position[0], position[1], position[2]);
 	map<double, std::vector<Particle>>::iterator it = ps->bakeContainer.find(ps->currentT + ps->bake_fps);
 	bool BakeExisted = (it != ps->bakeContainer.end());
@@ -62,21 +62,19 @@ void SpawnParticles(Mat4d CameraMatrix, int num)
 	{
 		if (BakeExisted == false)
 		{
-			for (int i = 0; i < num; ++i)
-			{
-				double mass = rand() % 5 + 0.2;
-				Particle p = Particle(pos, mass);
-				double F = rand() % 10 / 10.0 + 0.2;
-				double theta = rand() % 360 / 57.3;
-
-				double zSpeed = -(rand() % 10 / 10.0 + 5);
-				// double ySpeed = cos(theta) * F;
-				// double xSpeed = sin(theta) * F;
+			//for (int i = 0; i < num; ++i)
+			//{
+				double mass = (rand() % 100)/10.0;
+				double xPosition = (rand() % 5) / 10.0+pos[0];
+				double yPosition = (rand() % 5) / 10.0 + pos[1];;
+				double zPosition = (rand() % 5) / 10.0 + pos[2];;
+				double zSpeed = -(rand() % 100 / 10.0 + 5);
 				double ySpeed = 0;
-				double xSpeed = -(rand() % 10 / 10.0) + 0.5;
+				double xSpeed = -(rand() % 100 / 10.0) + 0.5;
+				Particle p = Particle(Vec3d(xPosition, yPosition, zPosition), mass);
 				p.setVelocity(Vec3d(xSpeed, ySpeed, zSpeed));
 				ps->particles.push_back(p);
-			}
+			//}
 		}
 	}
 }

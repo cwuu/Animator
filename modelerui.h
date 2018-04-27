@@ -41,7 +41,8 @@ public:
 	void simulate(bool bSimulate);
 	void redrawModelerView();
     void autoLoadNPlay();
-
+	bool rb() const;
+	bool flock() const;
 protected:
 
 	Fl_Box* labelBox(int nBox);

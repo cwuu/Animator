@@ -10,14 +10,33 @@
 #include <limits.h>
 #include "modelerdraw.h"
 #include <ctime>
-
+#include "modelerapp.h"
+#include<iostream>
 #define ParticleSize 7
 #define gravity 9.8
 #define K 0.25 //todo: find realistic k
+#define   m_groundY -50
 
 void Particle::update(double timeStep)
 {
 	velocity = velocity + netForce / mass * timeStep;
+	position = position + velocity * timeStep;
+	Vec3d force = this->getNetForce() - K * this->getVelocity();
+	force = force + Vec3d(0.0, -1.0, 0.0)* this->getMass()*gravity;
+	setNetForce(force);
+
+}
+void Particle::bounce(double timeStep, Particle& p)
+{
+	//v1*=(m1-m2)/(m1+m2) * v1
+	//v2*=(2m1)/(m1+m2) * v1
+	//velocity = velocity + netForce / mass * timeStep;
+
+	velocity = velocity*(mass - p.mass) / (mass + p.mass);
+	p.velocity = velocity*(2*mass) / (mass + p.mass);
+	//cout << "velocity" << velocity << endl;
+	//cout << "p.velocity" << p.velocity << endl;
+
 	position = position + velocity * timeStep;
 	Vec3d force = this->getNetForce() - K * this->getVelocity();
 	force = force + Vec3d(0.0, -1.0, 0.0)* this->getMass()*gravity;
@@ -121,15 +140,84 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	{
 		if (BakeExisted == false)
 		{
-			for (int i = 0; i < particles.size(); ++i)
-				particles[i].update(bake_fps);
 
+			if (ModelerApplication::Instance()->rb())
+			{
+				for (int i = 0; i < particles.size(); ++i)
+				{
+					for (int j = i+1; j < particles.size(); ++j)
+					{
+						double dx = abs(particles[i].position[0] - particles[j].position[0]);
+						double dy = abs(particles[i].position[1] - particles[j].position[1]);
+						double dz = abs(particles[i].position[2] - particles[j].position[2]);
+						double distance = sqrt(dx*dx + dy*dy + dz*dz);
+						//cout << "velocity" << particles[i].velocity;
+						if (distance < 14)
+						{
+							//particles[i].bounce(bake_fps, particles[j]);
+
+							Particle temp(particles[i]);
+							temp.velocity = (temp.velocity*(particles[i].mass  - particles[j].mass) / (particles[i].mass  - particles[j].mass)*10.0);
+							//particles[j].velocity = (particles[i].velocity*(2 * particles[i].mass) / (particles[i].mass + particles[j].mass)*10.0);
+							//cout << "     " << temp.velocity << endl;
+							particles[i].update(bake_fps);
+							particles[j].update(bake_fps);
+
+						}
+						else
+						{
+
+							particles[i].update(bake_fps);
+							//cout << "     " << particles[i].velocity << endl;
+							
+						}
+						cout << distance << endl;
+
+					}
+					//
+					//particles[i].update(bake_fps);
+			
+				}
+
+			}
+			else 
+			{
+				for (int i = 0; i < particles.size(); ++i)
+				{
+					
+					particles[i].update(bake_fps);
+				}
+					
+			}
 			bakeParticles(t);
 		}
 		else
 			particles = bakeContainer[t];
 
 	}
+
+	
+	//evolve
+	//particle.position += particle.velocity * delta_t;
+
+	/*else if (ModelerApplication::Instance()->flock()) {
+		//steer towards the average of neighbors
+		double radius = 1.5;
+		Vec3d avgV;
+		int count = 0;
+		for (auto par : m_cache[frame]) {
+			if ((par.position - particle.position).length2() < radius * radius) {
+				++count;
+				avgV += par.velocity;
+			}
+		}
+		avgV /= count;
+		particle.velocity = 0.5 * avgV + 0.5 * particle.velocity;
+	}
+	else {
+		particle.velocity += m_gravity * delta_t;
+		*/
+		
 }
 
 
@@ -143,6 +231,8 @@ void ParticleSystem::drawParticles(float t)
 		for (int i = 0; i < particles.size(); ++i)
 			particles[i].draw();
 	}
+
+
 }
 
 

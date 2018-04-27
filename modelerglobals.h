@@ -36,6 +36,6 @@ enum SampleModelControls
 // might as well have it as a macro.
 #define VAL(x) (ModelerApplication::Instance()->GetControlValue(x))
 #define SETVAL(control, value) (ModelerApplication::Instance()->SetControlValue(control, value))
-#define ANION()( ModelerApplication::Instance()->m_animating = true) 
-#define ANIOFF()( ModelerApplication::Instance()->m_animating = false) 
+//#define ANION()( ModelerApplication::Instance()->m_animating = true) 
+//#define ANIOFF()( ModelerApplication::Instance()->m_animating = false) 
 #endif

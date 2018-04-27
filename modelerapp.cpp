@@ -157,7 +157,15 @@ bool ModelerApplication::Animating()
 {
 	return m_animating;
 }
+bool ModelerApplication::rb()
+{
+	return m_ui->rb();
+}
 
+bool ModelerApplication::flock()
+{
+	return m_ui->flock();
+}
 void ModelerApplication::ValueChangedCallback()
 {
 
