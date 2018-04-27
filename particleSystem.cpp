@@ -12,7 +12,7 @@
 #include <ctime>
 #include "modelerapp.h"
 #include<iostream>
-#define ParticleSize 7
+#define ParticleSize 15
 #define gravity 9.8
 
 #define   m_groundY -50
@@ -199,7 +199,7 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 					}
 					*/
 					//cout << particles[i].position[2] << endl;
-					if (particles[i].position[2] < 0)
+					if (particles[i].position[2] < (double)ModelerApplication::Instance()->GetControlValue(ZPOS))
 					{
 						cout << "ffff" << endl;
 						//cout << particles[i].position[2] << endl;

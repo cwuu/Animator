@@ -1,27 +1,10 @@
-﻿  robotarm.cpp
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(12): warning C4005: 'M_PI': macro redefinition
-  c:\users\cwuu\desktop\animator\modelerglobals.h(5): note: see previous definition of 'M_PI'
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(63): warning C4018: '>': signed/unsigned mismatch
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(85): warning C4553: '==': operator has no effect; did you intend '='?
-c:\users\cwuu\desktop\animator\subdivisionsurface.h(86): warning C4553: '==': operator has no effect; did you intend '='?
-robotarm.cpp(142): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(166): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(167): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(168): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(169): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-robotarm.cpp(736): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(798): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(807): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(838): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(850): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(889): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(916): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(928): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(943): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(984): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(990): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1066): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
-robotarm.cpp(1073): warning C4805: '==': unsafe mix of type 'double' and type 'bool' in operation
+﻿  particleSystem.cpp
+particleSystem.cpp(53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+particleSystem.cpp(66): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+particleSystem.cpp(147): warning C4018: '<': signed/unsigned mismatch
+particleSystem.cpp(149): warning C4018: '<': signed/unsigned mismatch
+particleSystem.cpp(191): warning C4018: '<': signed/unsigned mismatch
+particleSystem.cpp(231): warning C4018: '<': signed/unsigned mismatch
+particleSystem.cpp(277): warning C4018: '<': signed/unsigned mismatch
   Animator.vcxproj -> C:\Users\cwuu\Desktop\animator\.\Release\modeler.exe
   Animator.vcxproj -> .\Release/Animator.pdb (Full PDB)
