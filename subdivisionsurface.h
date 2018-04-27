@@ -62,7 +62,7 @@ public:
 			float factor = 1;
 			if (averageMask.size() > i)
 				factor = averageMask[i];
-			sum += neighbours[i]->position * factor;
+			sum = sum + neighbours[i]->position * factor;
 		}
 		sum += alphaN * position;
 		position = sum / (alphaN + n);
@@ -267,12 +267,8 @@ public:
 		//#1 ~ #4: edges
 		//#0 & # 5: center point
 		for (int i = 0; i < 6; i++) 
-		{
 			vertices.push_back(new Vertex(positions[i]));
-			if (i != 0 && i != 5)
-				center = center + positions[i];
 
-		}
 
 		center = (center + positions[1] + positions[2] + positions[3] + positions[4])/4.0;
 
@@ -289,18 +285,6 @@ public:
 		Edge* e4 = new Edge(vertices[0], vertices[4]);
 		e4->setNeighbour();
 		edges.push_back(e4);
-		Edge* e5 = new Edge(vertices[5], vertices[1]);
-		e5->setNeighbour();
-		edges.push_back(e5);
-		Edge* e6 = new Edge(vertices[5], vertices[2]);
-		e6->setNeighbour();
-		edges.push_back(e6);
-		Edge* e7 = new Edge(vertices[5], vertices[3]);
-		e7->setNeighbour();
-		edges.push_back(e7);
-		Edge* e8 = new Edge(vertices[5], vertices[4]);
-		e8->setNeighbour();
-		edges.push_back(e8);
 		Edge* e9 = new Edge(vertices[1], vertices[2]);
 		e9->setNeighbour();
 		edges.push_back(e9);
@@ -313,17 +297,28 @@ public:
 		Edge* e12 = new Edge(vertices[4], vertices[1]);
 		e12->setNeighbour();
 		edges.push_back(e12);
-	
-		//create 8 faces
-		faces.push_back(new Triface(edges[1], edges[2], edges[0]));
-		faces.push_back(new Triface(edges[1], edges[4], edges[0]));
-		faces.push_back(new Triface(edges[3], edges[2], edges[0]));
-		faces.push_back(new Triface(edges[3], edges[4], edges[0]));
-		faces.push_back(new Triface(edges[1], edges[2], edges[5]));
-		faces.push_back(new Triface(edges[1], edges[4], edges[5]));
-		faces.push_back(new Triface(edges[3], edges[2], edges[5]));
-		faces.push_back(new Triface(edges[3], edges[4], edges[5]));
+		Edge* e5 = new Edge(vertices[5], vertices[1]);
+		e5->setNeighbour();
+		edges.push_back(e5);
+		Edge* e6 = new Edge(vertices[5], vertices[2]);
+		e6->setNeighbour();
+		edges.push_back(e6);
+		Edge* e7 = new Edge(vertices[5], vertices[3]);
+		e7->setNeighbour();
+		edges.push_back(e7);
+		Edge* e8 = new Edge(vertices[5], vertices[4]);
+		e8->setNeighbour();
+		edges.push_back(e8);
 
+		//create 8 faces
+		faces.push_back(new Triface(edges[0], edges[1], edges[4]));
+		faces.push_back(new Triface(edges[1], edges[2], edges[5]));
+		faces.push_back(new Triface(edges[2], edges[3], edges[6]));
+		faces.push_back(new Triface(edges[3], edges[0], edges[7]));
+		faces.push_back(new Triface(edges[8], edges[9], edges[4]));
+		faces.push_back(new Triface(edges[9], edges[10], edges[5]));
+		faces.push_back(new Triface(edges[10], edges[11], edges[6]));
+		faces.push_back(new Triface(edges[11], edges[8], edges[7]));
 	}
 	void draw() 
 	{
@@ -387,3 +382,4 @@ public:
 	}
 };
 #endif
+
