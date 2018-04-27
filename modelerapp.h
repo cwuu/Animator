@@ -71,6 +71,7 @@ public:
 	//flock behavior
 	bool flock();
 
+	bool bounce();
 
 private:
 	// Private for singleton

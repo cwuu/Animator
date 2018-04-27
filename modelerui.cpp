@@ -901,6 +901,12 @@ bool ModelerUI::rb() const
 		return true;
 	return false;
 }
+bool ModelerUI::bounce() const
+{
+	if (m_pbtbounce->value())
+		return true;
+	return false;
+}
 
 bool ModelerUI::flock() const
 {

@@ -81,6 +81,6 @@ public:
   Fl_Value_Slider *m_psldrFlatness;
   Fl_Light_Button *m_pbtRigidBody;
   Fl_Light_Button *m_pbtFlock;
-
+  Fl_Light_Button*  m_pbtbounce;
 };
 #endif

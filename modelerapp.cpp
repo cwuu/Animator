@@ -161,6 +161,10 @@ bool ModelerApplication::rb()
 {
 	return m_ui->rb();
 }
+bool ModelerApplication::bounce()
+{
+	return m_ui->bounce();
+}
 
 bool ModelerApplication::flock()
 {

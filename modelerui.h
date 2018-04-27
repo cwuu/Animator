@@ -42,6 +42,7 @@ public:
 	void redrawModelerView();
     void autoLoadNPlay();
 	bool rb() const;
+	bool bounce() const;
 	bool flock() const;
 protected:
 
