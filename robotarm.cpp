@@ -45,7 +45,10 @@ private:
 	InverseKinematics* rightLeg;
 };
 
-
+Vec3d getPosition()
+{
+	return Vec3d(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
+}
 
 
 void SpawnParticles(Mat4d CameraMatrix, int num)
@@ -64,16 +67,36 @@ void SpawnParticles(Mat4d CameraMatrix, int num)
 		{
 			//for (int i = 0; i < num; ++i)
 			//{
-				double mass = (rand() % 100)/10.0;
-				double xPosition = (rand() % 5) / 10.0+pos[0];
-				double yPosition = (rand() % 5) / 10.0 + pos[1];;
-				double zPosition = (rand() % 5) / 10.0 + pos[2];;
+			if (!ModelerApplication::Instance()->rb())
+			{
+				double mass = (rand() % 100) / 10.0;
+				double xPosition = (rand() % 5) / 10.0 + pos[0];
+				double yPosition = (rand() % 5) / 10.0 + pos[1];
+				double zPosition = (rand() % 5) / 10.0 + pos[2];
 				double zSpeed = -(rand() % 100 / 10.0 + 5);
 				double ySpeed = 0;
 				double xSpeed = -(rand() % 100 / 10.0) + 0.5;
 				Particle p = Particle(Vec3d(xPosition, yPosition, zPosition), mass);
 				p.setVelocity(Vec3d(xSpeed, ySpeed, zSpeed));
 				ps->particles.push_back(p);
+			}
+
+			else
+			{
+
+					Vec3d shift(1.0, -2.0, 5.0);
+					double mass = (rand() % 100) / 10.0;
+					double xPosition = (rand() % 5) / 10.0 + pos[0] + shift[0];
+					double yPosition = (rand() % 5) / 10.0 + pos[1] + shift[1];
+					double zPosition = (rand() % 5) / 10.0 + pos[2] + shift[2];
+					double zSpeed = -(rand() % 1000 / 10.0 + 5);
+					double ySpeed = 0;
+					double xSpeed = -(rand() % 1000 / 10.0) + 0.5;
+					Particle p = Particle(Vec3d(xPosition, yPosition, zPosition), mass);
+					p.setVelocity(Vec3d(xSpeed, ySpeed, zSpeed));
+					ps->particles.push_back(p);
+				
+			}
 			//}
 		}
 	}

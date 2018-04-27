@@ -14,9 +14,10 @@
 #include<iostream>
 #define ParticleSize 7
 #define gravity 9.8
-#define K 0.25 //todo: find realistic k
+
 #define   m_groundY -50
 
+double K = 0.25;
 void Particle::update(double timeStep)
 {
 	velocity = velocity + netForce / mass * timeStep;
@@ -141,7 +142,7 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 		if (BakeExisted == false)
 		{
 
-			if (ModelerApplication::Instance()->rb())
+			if (ModelerApplication::Instance()->bounce())
 			{
 				for (int i = 0; i < particles.size(); ++i)
 				{
@@ -180,7 +181,52 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 				}
 
 			}
-			else 
+			else if (ModelerApplication::Instance()->rb())
+			{
+				
+				Vec3d boundary((double)ModelerApplication::Instance()->GetControlValue(XPOS),
+					(double)ModelerApplication::Instance()->GetControlValue(YPOS),
+					(double)ModelerApplication::Instance()->GetControlValue(ZPOS));
+
+				for (int i = 0; i < particles.size(); ++i)
+				{
+					/*
+					if (particles[i].position[2] < (-1.0 + boundary[2]) || particles[i].position[2] < (1.0 + boundary[2]))
+					{
+						cout << "ffff" << endl;
+						particles[i].velocity[2] *= (-1);
+						particles[i].update(bake_fps);
+					}
+					*/	
+					//cout << particles[i].position[2] << endl;
+					if (particles[i].position[2] < 0)
+					{
+						cout << "ffff" << endl;
+						//cout << particles[i].position[2] << endl;
+						for (int i = 0; i < 30; i++)
+						{
+							particles[i].velocity[2] *= (-1);
+							K = -K;
+							particles[i].update(bake_fps);
+						}
+
+					}
+					else
+					{
+						cout << "jjjjjj" << endl;
+						particles[i].update(bake_fps);
+					}
+					particles[i].update(bake_fps);
+					/*if (particles[i].position[2] < (-1000.0 + boundary[2]))
+					{
+						cout << "ffff" << endl;
+						particles[i].velocity[2] *= (-1);
+						particles[i].update(bake_fps);
+					}*/
+
+				}
+			}
+			else
 			{
 				for (int i = 0; i < particles.size(); ++i)
 				{
