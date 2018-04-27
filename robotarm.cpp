@@ -18,10 +18,13 @@
 #include "vec.h"
 #include "bitmap.h"
 #include "subdivisionsurface.h"
+#include <vector>
+
 using namespace std;
 
 
 // To make a SampleModel, we inherit off of ModelerView
+vector<float> Vertex::averageMask;
 class SampleModel : public ModelerView
 {
 public:
@@ -199,7 +202,7 @@ void SampleModel::default_draw()
 
 	p[5] = Vec3f(0, 0, 0);
 
-	cout << "adjust vertices or not ?(1 for yes/0 for no)" << endl;
+	/*cout << "adjust vertices or not ?(1 for yes/0 for no)" << endl;
 	bool adjust;
 	cin >> adjust;
 	if (adjust) 
@@ -211,10 +214,16 @@ void SampleModel::default_draw()
 				cin >> coords[j];
 			p[i] = Vec3f(coords[0], coords[1], coords[2]);
 		}
-	}
+	}*/
 	diamond = new Diamond(p);
-
-	cout << "adjust Avgmask?(1 for yes/0 for no)" << endl;
+	for (int i = 0; i < 4; i++)
+	{
+		float k = 1.5;
+		if (i % 2 == 0)
+			k = 0.5;
+		Vertex::averageMask.push_back(1.0f * k);
+	}
+	/*cout << "adjust Avgmask?(1 for yes/0 for no)" << endl;
 	cin >> adjust;
 	if (!adjust) 
 	{
@@ -234,7 +243,7 @@ void SampleModel::default_draw()
 			Vertex::averageMask.push_back(a);
 		}
 
-	}
+	}*/
 
 	int num_split = 3;
 	diamond->split(num_split);
