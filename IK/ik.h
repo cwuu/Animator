@@ -16,7 +16,7 @@ private:
 	float arm1Length;//the length of the arm between end point and joint
 	float arm2Length;//the length of the arm between joint and effector
 
-	const float THRESHOLD = 0.05;
+	const float THRESHOLD = 1;
 	bool enableConstraint = false;
 	float constraint1;//store the constraint angle in sine, used to calculate vector
 	float constraint2;

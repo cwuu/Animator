@@ -29,19 +29,20 @@ class SampleModel : public ModelerView
 {
 public:
 	SampleModel(int x, int y, int w, int h, char *label)
-		: ModelerView(x, y, w, h, label) { }
+		: ModelerView(x, y, w, h, label) {
+		ik_point = Vec3f(0, 0, 0);
+		rightLeg = new InverseKinematics(ik_point, 1.2, 1.2);
+
+	};
 
 	virtual void draw();
 	int feet_angle = 0;
+	Vec3f ik_point;
 	bool feet_dir = true; // false= negative, true = positive
 	bool heart_beat = false;
 	int beat_count = 0;
-	
 	//int it = 0;
-	void default_draw();
-
 	Diamond* diamond;
-private: 
 	InverseKinematics* rightLeg;
 };
 
@@ -88,54 +89,16 @@ ModelerView* createSampleModel(int x, int y, int w, int h, char *label)
 	return new SampleModel(x, y, w, h, label);
 }
 
-// We are going to override (is that the right word?) the draw()
-// method of ModelerView to draw out SampleModel
-//void SampleModel::draw() {
-	// motion blur by accumulation buffer
-	//if (VAL(ACCUMULATION_BUFFER)) {
-		//glClear(GL_ACCUM_BUFFER_BIT);
-		//for (int i = 0; i < 4; i++)
-		//{
-			//glPushMatrix();
-			//glRotated(i * 10., 0, 1, 0);
-		//	default_draw();
-			//glPopMatrix();
-			//glDrawBuffer(GL_FRONT);
-			//glAccum(GL_ACCUM, 0.25);
-			//glDrawBuffer(GL_BACK);
-		//}
-		//glAccum(GL_RETURN, 1.0);
-	//}
-	//else default_draw();
-//}
 
-VOID SampleModel::draw() {
-	if (VAL(ACCUMULATION_BUFFER)) {
-		glClear(GL_ACCUM_BUFFER_BIT);
-		for(int it = 0; it < 4; it++ )
-		while (it < 4) {
-			it++;
-			default_draw();
-			glAccum(GL_ACCUM, 1.0);
-			glDrawBuffer(GL_FRONT);
-			glAccum(GL_RETURN, 4.0 / (it + 1));
-			//glClear(GL_ACCUM_BUFFER_BIT);
-			glDrawBuffer(GL_BACK);
-			
-			printf("hahaha");
-		}
-			glAccum(GL_ACCUM, float(1.0 / 4));
 
-		//}
-		//glAccum(GL_RETURN, 1.f);
-	}
-	else default_draw();
-}
-void SampleModel::default_draw()
+void SampleModel::draw()
 {
 	
-
-
+	Vec4f ik_result = Vec4f(0.f, 0.f, 0.f, 0.f); 
+	if (VAL(ACCUMULATION_BUFFER)) {
+		glAccum(GL_RETURN, 1.0f);
+		glClear(GL_ACCUM_BUFFER_BIT);
+	}
 	/*if (ModelerApplication::Instance()->m_animating == true)
 	{
 		beat_count++;
@@ -423,43 +386,47 @@ void SampleModel::default_draw()
 
 		//draw right leg (joint->upper leg->joint->lower leg->foot)
 		//implement ik here 
+		
 		if (VAL(LEVEL_OF_DETAILS) >= 2)
 		{
-			if (VAL(ENABLE_IK)) {
-				// if the ik is enabled, calculate the rotation angle accordingly 
-				Vec3f destination = Vec3f(VAL(IK_LEG_X), VAL(IK_LEG_Y), VAL(IK_LEG_Z));
+			
 				setDiffuseColor(COLOR_DARK_RED);
 				glPushMatrix();
 				glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
+				glTranslated(-0.8, -1.6, 0.5);
+				glPushMatrix();
 
-			}
-			setDiffuseColor(COLOR_DARK_RED);
-			glPushMatrix();
-			glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
-			glTranslated(-0.8, -1.6, 0.5);
-			glPushMatrix();
-			//draw upper leg
-			glRotated(-270, 1.0, 0.0, 0.0);
-			glRotated(VAL(RIGHT_LEG), 1.0, 0.0, 0.0);
 
-			glPushMatrix();
-			glTranslated(0.0, 0.0, 0.5);
-			glScaled(0.4, 0.3, 0.5);
+				//draw upper leg
+				
+					rightLeg->reset();
 
-			glutSolidDodecahedron();
-			glPopMatrix();
+					glRotated(-270, 1.0, 0.0, 0.0);
+					glRotated(VAL(RIGHT_LEG), 1.0, 0.0, 0.0);
 
+					glPushMatrix();
+					glTranslated(0.0, 0.0, 0.5);
+					glScaled(0.4, 0.3, 0.5);
+
+					glutSolidDodecahedron();
+					glPopMatrix();
+				
+			
 
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
 				//draw joint
 				setDiffuseColor(COLOR_YELLOW);
 				glTranslated(0, 0, 1.3);
+			
 				glRotated(VAL(RIGHT_KNEE), 1.0, 0.0, 0.0);
 				drawSphere(0.3);
 				if (VAL(LEVEL_OF_DETAILS) >= 4)
 				{
 					//draw lower leg
+					
+						
+					
 					setDiffuseColor(COLOR_DARK_RED);
 					glTranslated(0, 0, 0.2);
 					glPushMatrix();
@@ -539,7 +506,6 @@ void SampleModel::default_draw()
 	}
 	else
 	{
-		
 		
 		// height field 
 		if (VAL(HEIGHT_FIELD)) {
@@ -693,6 +659,15 @@ void SampleModel::default_draw()
 			glPopMatrix();
 			
 		}
+
+		
+		// the box indicating where the index is 
+		//glTranslated(0, -4.3, 0);
+		//Vec3f destination = Vec3f(VAL(IK_LEG_X) - 0.5, VAL(IK_LEG_Y) - 4.1, VAL(IK_LEG_Z));
+		glTranslated(VAL(IK_LEG_X) + 0.5, VAL(IK_LEG_Y) - 4.0, VAL(IK_LEG_Z));
+		setDiffuseColor(COLOR_GREEN);
+		drawBox(0.25, 0.25, 0.25);
+		glTranslated(-VAL(IK_LEG_X) - 0.5, -VAL(IK_LEG_Y) + 4.0, -VAL(IK_LEG_Z));
 		//draw body
 		setAmbientColor(.1f, .1f, .1f);
 		setDiffuseColor(COLOR_DARK_RED);
@@ -967,19 +942,24 @@ void SampleModel::default_draw()
 		//draw right leg (joint->upper leg->joint->lower leg->foot)
 		if (VAL(LEVEL_OF_DETAILS) >= 2)
 		{
+			
 			setDiffuseColor(COLOR_DARK_RED);
 			glPushMatrix();
+			
 			glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
+			
 			glTranslated(-0.8, -1.6, 0.5);
 			glPushMatrix();
+			
 			//draw upper leg
-			glRotated(-270, 1.0, 0.0, 0.0);
-			glRotated(VAL(RIGHT_LEG), 1.0, 0.0, 0.0);
-			if (VAL(TEXTURE) == 1)
-				drawTextureCylinder(1.2, 0.4, 0.3, "Image/Red.bmp");
-			else
-				drawCylinder(1.2, 0.4, 0.3);//upper leg
-
+			
+				glRotated(-270, 1.0, 0.0, 0.0);
+				glRotated(VAL(RIGHT_LEG), 1.0, 0.0, 0.0);
+				if (VAL(TEXTURE) == 1)
+					drawTextureCylinder(1.2, 0.4, 0.3, "Image/Red.bmp");
+				else
+					drawCylinder(1.2, 0.4, 0.3);//upper leg
+			
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
 				//draw joint
@@ -1037,24 +1017,42 @@ void SampleModel::default_draw()
 			glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
 			glTranslated(0.8, -1.6, 0.5);
 			glPushMatrix();
+			//glRotated(-270, 1.0, 0.0, 0.0);
 			//draw upper leg
-			glRotated(-270, 1.0, 0.0, 0.0);
-			glRotated(VAL(LEFT_LEG), 1.0, 0.0, 0.0);
-			if (VAL(TEXTURE) == 1)
-				drawTextureCylinder(1.2, 0.4, 0.3, "Image/Red.bmp");
-			else
+			if (VAL(ENABLE_IK)) {
+				// if the ik is enabled, calculate the rotation angle accordingly 
+				
+
+				Vec3f destination = Vec3f(VAL(IK_LEG_X) +1.0, VAL(IK_LEG_Y) , VAL(IK_LEG_Z));
+				ik_result = rightLeg->getResult(destination);
+				glRotated(180, 1.0, 0.0, 0.0);
+				glRotated(ik_result[1], 0, 1, 0);
+				glRotated(ik_result[0], 1, 0, 0);
 				drawCylinder(1.2, 0.4, 0.3);//upper leg
 
+			}
+			else {
+				rightLeg->reset();
+				glRotated(-270, 1.0, 0.0, 0.0);
+				glRotated(VAL(LEFT_LEG), 1.0, 0.0, 0.0);
+				if (VAL(TEXTURE) == 1)
+					drawTextureCylinder(1.2, 0.4, 0.3, "Image/Red.bmp");
+				else
+					drawCylinder(1.2, 0.4, 0.3);//upper leg
+			}
 			if (VAL(LEVEL_OF_DETAILS) >= 3)
 			{
-				//draw joint
 				setDiffuseColor(COLOR_GRAY);
 				glTranslated(0, 0, 1.3);
+				
+				//draw joint
+				
 				glRotated(VAL(LEFT_KNEE), 1.0, 0.0, 0.0);
 				if (VAL(METABALL) == false)
 				{
 					drawSphere(0.3);
 				}
+
 				else
 				{
 					if (VAL(METABALL) == true)
@@ -1072,20 +1070,30 @@ void SampleModel::default_draw()
 					//draw lower leg
 					setDiffuseColor(COLOR_DARK_RED);
 					glTranslated(0, 0, 0.2);
-					if (VAL(TEXTURE) == 1)
-						drawTextureCylinder(1.2, 0.3, 0.4, "Image/Red.bmp");
-					else
-						drawCylinder(1.2, 0.3, 0.4);//lower leg
-
-					if (VAL(LEVEL_OF_DETAILS) >= 5)
-					{
-						//draw foot		
-						setDiffuseColor(COLOR_GRAY);
-						glRotated(-(VAL(FEET_ROTATE) + feet_angle), 0.0, 0.0, 1.0);
-						glTranslated(-0.35, -0.4, 1.2);
-
-						drawBox(0.75, 1.5, 0.3);//foot
+					
+					if (VAL(ENABLE_IK)) {
+						
+						glRotated(ik_result[3], 0, 1, 0);
+						glRotated(ik_result[2], 1, 0, 0);
+						drawCylinder(1.2, 0.3, 0.4);
+						//printf("lower leg angle result, (%d,%d)", ik_result[3], ik_result[2]);
 					}
+					else {
+						if (VAL(TEXTURE) == 1)
+							drawTextureCylinder(1.2, 0.3, 0.4, "Image/Red.bmp");
+						else
+							drawCylinder(1.2, 0.3, 0.4);//lower leg
+					}
+						if (VAL(LEVEL_OF_DETAILS) >= 5)
+						{
+							//draw foot		
+							setDiffuseColor(COLOR_GRAY);
+							glRotated(-(VAL(FEET_ROTATE) + feet_angle), 0.0, 0.0, 1.0);
+							glTranslated(-0.35, -0.4, 1.2);
+
+							drawBox(0.75, 1.5, 0.3);//foot
+						}
+					
 				}
 			}
 			glPopMatrix();
@@ -1094,6 +1102,17 @@ void SampleModel::default_draw()
 		}
 
 	}
+	if (VAL(ACCUMULATION_BUFFER)) {
+		glAccum(GL_ACCUM, 1.0);
+		//	glDrawBuffer(GL_FRONT);
+		//glAccum(GL_RETURN, 1.0);
+		endDraw();
+		//glAccum(GL_RETURN, 1.0);
+		//glDrawBuffer(GL_BACK);
+		//glClear(GL_ACCUM_BUFFER_BIT);
+	}
+	else
+		endDraw();
 	
 }
 
@@ -1147,9 +1166,9 @@ int main()
 	controls[PARTICLE_NUM] = ModelerControl("Number of particel", 0, 50, 1, 5);
 	controls[ACCUMULATION_BUFFER] = ModelerControl("accumulation buffer", 0, 1, 1, 0);
 	controls[ENABLE_IK] = ModelerControl("Inverse Kinematics", 0, 1, 1, 0);
-	controls[IK_LEG_X] = ModelerControl("IK arm X-axis", -1, 1, 0.1f, 0);
+	controls[IK_LEG_X] = ModelerControl("IK arm X-axis", 0, 2, 0.1f, 0);
 	controls[IK_LEG_Y] = ModelerControl("IK arm Y-axis", -1, 1, 0.1f, 0);
-	controls[IK_LEG_Z] = ModelerControl("IK arm Z-axis", -1, 1, 0.1f, 0);
+	controls[IK_LEG_Z] = ModelerControl("IK arm Z-axis", -2, 2, 0.1f, 0);
 
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
