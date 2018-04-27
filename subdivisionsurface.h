@@ -9,7 +9,7 @@
 #include <FL/gl.h>
 
 
-#define PI 3.14159265359
+#define M_PI 3.14159265359
 
 using namespace std;
 class Triface;
@@ -20,7 +20,7 @@ public:
 	float alpha() 
 	{
 		int n = neighbours.size();
-		float betaN = 5 / 4.0f - pow(3 + 2 * cosf(2 * PI / n), 2) / 32.0f;
+		float betaN = 5 / 4.0f - pow(3 + 2 * cosf(2 * M_PI / n), 2) / 32.0f;
 		return n * (1 - betaN) / betaN;
 	}
 

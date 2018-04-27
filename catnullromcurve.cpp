@@ -36,12 +36,13 @@ void CatnullRomEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts, st
 		for (int i = 0; i < SAMPLE; i++)
 		{
 
+
 			const Mat4d M
-			(-1 / 2.0, 3 / 2.0, -3 / 2.0, 1 / 2.0,
-				2 / 2.0, -5 / 2.0, 4 / 2.0, -1 / 2.0,
-				-1 / 2.0, 0, 1 / 2.0, 0,
-				0, 2 / 2.0, 0, 0);
-	
+			(-1*dTension/ 2.0, 3 * dTension/ 2.0, -3 * dTension/ 2.0, 1 * dTension / 2.0,
+				2 * dTension / 2.0, -5 * dTension / 2.0, 4 * dTension / 2.0, -1 * dTension / 2.0,
+				-1 * dTension / 2.0, 0, 1 * dTension / 2.0, 0,
+				0, 2 * dTension / 2.0, 0, 0);
+			
 			const double interval = i / (double)SAMPLE;
 			Vec4d T(interval* interval* interval, interval* interval, interval, 1);
 			Point bezier_point(T*M*px, T*M*py); //weighted bezier curve

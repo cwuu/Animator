@@ -191,7 +191,6 @@ void SampleModel::default_draw()
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse1);
 	
 
-
 	Vec3f p[6];
 	p[0] = Vec3f(0, 2, 0);
 
@@ -688,6 +687,8 @@ void SampleModel::default_draw()
 		glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
 
 		glTranslated(-1, -1, 0);
+
+
 		if (VAL(TEXTURE) == 1)
 			drawTextureBox(2, 2, 1, "Image/Red.bmp");
 		else
@@ -760,7 +761,7 @@ void SampleModel::default_draw()
 				glPushMatrix();
 				glRotated(-90, 1.0, 0.0, 0.0);
 				glTranslated(0.0, -1.9, 0.0);
-				setDiffuseColor(COLOR_GRAY);
+				setDiffuseColor(COLOR_GREEN);
 				diamond->draw();
 				glPopMatrix();
 				//draw nose
@@ -970,7 +971,7 @@ void SampleModel::default_draw()
 			{
 				//draw joint
 				setDiffuseColor(COLOR_GRAY);
-				glTranslated(0, 0, 1.3);
+				glTranslated(0, 0, 1.3); //1.3 is y
 				glRotated(VAL(RIGHT_KNEE), 1.0, 0.0, 0.0);
 				if (VAL(METABALL) == false)
 				{
